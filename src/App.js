@@ -1,7 +1,7 @@
-import Header from "./components/Header";
+import HeaderSection from "./components/Header";
 
 function App() {
-  return <Header />;
+  return <HeaderSection />;
 }
 
 export default App;

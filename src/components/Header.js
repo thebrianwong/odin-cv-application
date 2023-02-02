@@ -1,7 +1,7 @@
 import React from "react";
-import Name from "./Name";
+import HeaderElement from "./HeaderElement";
 
-class Header extends React.Component {
+class HeaderSection extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,4 +14,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default HeaderSection;

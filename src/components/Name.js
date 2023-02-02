@@ -6,7 +6,17 @@ class Name extends React.Component {
     this.state = { name: "", editing: false };
   }
   render() {
-    return <>{!this.state.editing && <p>{this.state.name}</p>}</>;
+    return (
+      <>
+        {!this.state.editing &&
+          (this.state.name.length === 0 ? (
+            <p>Name</p>
+          ) : (
+            <p>{this.state.name}</p>
+          ))}
+        {this.state.editing && <input type={"text"}></input>}
+      </>
+    );
   }
 }
 

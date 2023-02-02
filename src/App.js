@@ -1,4 +1,4 @@
-import HeaderSection from "./components/Header";
+import HeaderSection from "./components/HeaderSection";
 
 function App() {
   return <HeaderSection />;

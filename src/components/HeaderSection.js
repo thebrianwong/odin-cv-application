@@ -7,11 +7,11 @@ class HeaderSection extends React.Component {
   }
   render() {
     return (
-      <div className="header">
+      <form className="header">
         <HeaderElement headerType="name" inputType="text" />
         <HeaderElement headerType="email" inputType="email" />
         <HeaderElement headerType="phone" inputType="tel" />
-      </div>
+      </form>
     );
   }
 }

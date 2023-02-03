@@ -1,4 +1,5 @@
 import React from "react";
+import AddItemButton from "./AddItemButton";
 import EducationElement from "./EducationElement";
 
 class EducationSection extends React.Component {
@@ -8,6 +9,7 @@ class EducationSection extends React.Component {
         <div className="education">
           <EducationElement />
         </div>
+        <AddItemButton />
       </>
     );
   }

@@ -1,10 +1,13 @@
 import React from "react";
+import EducationElement from "./EducationElement";
 
 class EducationSection extends React.Component {
   render() {
     return (
       <>
-        <form className="education"></form>
+        <div className="education">
+          <EducationElement />
+        </div>
       </>
     );
   }

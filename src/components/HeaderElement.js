@@ -27,13 +27,13 @@ class HeaderElement extends React.Component {
     };
     return (
       <>
-        {!this.state.editing &&
-          (this.state.inputValue.length === 0 ? (
-            <p>{placeholder}</p>
-          ) : (
-            <p>{this.state.inputValue}</p>
-          ))}
-        {this.state.editing && (
+        {!this.state.editing ? (
+          <p>
+            {this.state.inputValue.length === 0
+              ? placeholder
+              : this.state.inputValue}
+          </p>
+        ) : (
           <input
             type={inputType}
             value={this.state.inputValue}

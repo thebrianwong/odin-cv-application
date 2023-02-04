@@ -42,7 +42,6 @@ class EducationElement extends React.Component {
     };
     const submitEdit = () => {
       this.setState({ editing: false });
-      console.log(this.props);
       const endDate = resolveEndDate();
       updateItem(
         this.state.schoolNameInput,

@@ -26,7 +26,7 @@ class HeaderElement extends React.Component {
       this.setState({ editing: false });
     };
     return (
-      <>
+      <div>
         {!this.state.editing ? (
           <p>
             {this.state.inputValue.length === 0
@@ -45,7 +45,7 @@ class HeaderElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
-      </>
+      </div>
     );
   }
 }

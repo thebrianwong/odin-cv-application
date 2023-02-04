@@ -3,10 +3,10 @@ import EducationSection from "./components/EducationSection";
 
 function App() {
   return (
-    <div>
+    <>
       <HeaderSection />
       <EducationSection />
-    </div>
+    </>
   );
 }
 

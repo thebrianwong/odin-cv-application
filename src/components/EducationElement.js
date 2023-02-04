@@ -56,7 +56,7 @@ class EducationElement extends React.Component {
       );
     };
     return (
-      <>
+      <div>
         {!this.state.editing ? (
           <div>
             <p className="school-name">{schoolName}</p>
@@ -110,7 +110,7 @@ class EducationElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
-      </>
+      </div>
     );
   }
 }

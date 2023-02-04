@@ -29,15 +29,6 @@ class EducationSection extends React.Component {
       const itemToUpdate = updatedItems.find((item, index) => {
         return Number(itemIndex) === index;
       });
-      // if (inputType === "schoolName") {
-      //   itemToUpdate.schoolName = newValue;
-      // } else if (inputType === "degree") {
-      //   itemToUpdate.degree = newValue;
-      // } else if (inputType === "startDate") {
-      //   itemToUpdate.studyDates.start = newValue;
-      // } else if (inputType === "endDate") {
-      //   itemToUpdate.studyDates.end = newValue;
-      // }
       itemToUpdate.schoolName = newSchool;
       itemToUpdate.degree = newDegree;
       itemToUpdate.studyDates.start = newStartDate;
@@ -58,7 +49,6 @@ class EducationSection extends React.Component {
     return (
       <>
         <div className="education">
-          {/* <EducationElement /> */}
           {this.state.items.map((item, index) => (
             <EducationElement
               itemIndex={index}

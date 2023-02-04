@@ -7,7 +7,6 @@ class EducationElement extends React.Component {
     this.state = {
       schoolNameInput: props.schoolName,
       degreeInput: props.degree,
-      // studyDates: { start: props.startDate, end: props.endDate },
       startDateInput: props.startDate,
       endDateInput: props.endDate,
       editing: false,
@@ -20,26 +19,13 @@ class EducationElement extends React.Component {
       } else if (information === "degree") {
         this.setState({ degreeInput: e.target.value });
       } else if (information === "startDate") {
-        // const studyDates = { ...this.state.studyDates };
-        // studyDates.start = e.target.value;
-        // this.setState({ studyDates });
         this.setState({ startDateInput: e.target.value });
       } else if (information === "endDate") {
-        // const studyDates = { ...this.state.studyDates };
-        // studyDates.end = e.target.value;
-        // this.setState({ studyDates });
         this.setState({ endDateInput: e.target.value });
       }
     };
-    const {
-      schoolName,
-      degree,
-      startDate,
-      endDate,
-      updateItem,
-      keyID,
-      itemIndex,
-    } = this.props;
+    const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
+      this.props;
     const startEdit = () => {
       this.setState({ editing: true });
     };

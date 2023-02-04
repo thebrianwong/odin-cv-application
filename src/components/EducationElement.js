@@ -31,11 +31,6 @@ class EducationElement extends React.Component {
         this.setState({ onGoing: !this.state.onGoing });
       }
     };
-    const handleCheck = () => {
-      this.setState({ onGoing: !this.state.onGoing });
-    };
-    const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
-      this.props;
     const resolveEndDate = () => {
       if (this.state.onGoing) {
         this.setState({ endDateInput: "" });
@@ -100,7 +95,7 @@ class EducationElement extends React.Component {
             />
             <OnGoingCheckbox
               onGoing={this.state.onGoing}
-              handleCheck={handleCheck}
+              sendChanges={handleChange}
             />
           </form>
         )}

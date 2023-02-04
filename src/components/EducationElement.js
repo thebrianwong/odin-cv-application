@@ -9,7 +9,7 @@ class EducationElement extends React.Component {
       degreeInput: props.degree,
       startDateInput: props.startDate,
       endDateInput: props.endDate,
-      editing: false,
+      editing: true,
     };
   }
   render() {

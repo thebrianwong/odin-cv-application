@@ -6,15 +6,8 @@ class EducationSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [
-        {
-          schoolName: "University of Cookies",
-          degree: "Snickerdoodle's Degree",
-          studyDates: { start: "2000-08-08", end: "2200-08-08" },
-          keyID: 0,
-        },
-      ],
-      IDCounter: 1,
+      items: [],
+      IDCounter: 0,
     };
   }
   render() {
@@ -38,9 +31,9 @@ class EducationSection extends React.Component {
     const addItem = () => {
       this.setState({
         items: this.state.items.concat({
-          schoolName: "University of Cookies",
-          degree: "Snickerdoodle's Degree",
-          studyDates: { start: "2000-08-08", end: "2200-08-08" },
+          schoolName: "",
+          degree: "",
+          studyDates: { start: "", end: "" },
           keyID: this.state.IDCounter,
         }),
         IDCounter: this.state.IDCounter + 1,

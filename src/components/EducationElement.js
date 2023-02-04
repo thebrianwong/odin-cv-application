@@ -9,6 +9,7 @@ class EducationElement extends React.Component {
       degreeInput: props.degree,
       startDateInput: props.startDate,
       endDateInput: props.endDate,
+      onGoing: false,
       editing: true,
     };
   }
@@ -22,21 +23,32 @@ class EducationElement extends React.Component {
         this.setState({ startDateInput: e.target.value });
       } else if (information === "endDate") {
         this.setState({ endDateInput: e.target.value });
+      } else if (information === "onGoing") {
+        this.setState({ onGoing: !this.state.onGoing });
       }
     };
     const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
       this.props;
+    const resolveEndDate = () => {
+      if (this.state.onGoing) {
+        this.setState({ endDateInput: "" });
+        return "Present";
+      } else {
+        return this.state.endDateInput;
+      }
+    };
     const startEdit = () => {
       this.setState({ editing: true });
     };
     const submitEdit = () => {
       this.setState({ editing: false });
       console.log(this.props);
+      const endDate = resolveEndDate();
       updateItem(
         this.state.schoolNameInput,
         this.state.degreeInput,
         this.state.startDateInput,
-        this.state.endDateInput,
+        endDate,
         itemIndex
       );
     };
@@ -78,9 +90,18 @@ class EducationElement extends React.Component {
             <label>
               End Date:
               <input
+                disabled={this.state.onGoing}
                 type={"date"}
                 value={this.state.endDateInput}
                 onChange={(e) => handleChange(e, "endDate")}
+              />
+            </label>
+            <label>
+              Ongoing:
+              <input
+                type={"checkbox"}
+                checked={this.state.onGoing}
+                onChange={(e) => handleChange(e, "onGoing")}
               />
             </label>
           </form>

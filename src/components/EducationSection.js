@@ -42,6 +42,8 @@ class EducationSection extends React.Component {
     return (
       <>
         <div className="education">
+          <h2>Education</h2>
+          {this.state.items.length === 0 && <p>Add your education here!</p>}
           {this.state.items.map((item, index) => (
             <EducationElement
               itemIndex={index}

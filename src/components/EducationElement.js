@@ -5,42 +5,63 @@ class EducationElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      schoolName: "University of Cookies",
-      degree: "Snickerdoodle's Degree",
-      studyDates: { start: "2000-08-08", end: "2200-08-08" },
+      schoolNameInput: props.schoolName,
+      degreeInput: props.degree,
+      // studyDates: { start: props.startDate, end: props.endDate },
+      startDateInput: props.startDate,
+      endDateInput: props.endDate,
       editing: false,
     };
   }
   render() {
     const updateInput = (e, information) => {
       if (information === "schoolName") {
-        this.setState({ schoolName: e.target.value });
+        this.setState({ schoolNameInput: e.target.value });
       } else if (information === "degree") {
-        this.setState({ degree: e.target.value });
+        this.setState({ degreeInput: e.target.value });
       } else if (information === "startDate") {
-        const studyDates = { ...this.state.studyDates };
-        studyDates.start = e.target.value;
-        this.setState({ studyDates });
+        // const studyDates = { ...this.state.studyDates };
+        // studyDates.start = e.target.value;
+        // this.setState({ studyDates });
+        this.setState({ startDateInput: e.target.value });
       } else if (information === "endDate") {
-        const studyDates = { ...this.state.studyDates };
-        studyDates.end = e.target.value;
-        this.setState({ studyDates });
+        // const studyDates = { ...this.state.studyDates };
+        // studyDates.end = e.target.value;
+        // this.setState({ studyDates });
+        this.setState({ endDateInput: e.target.value });
       }
     };
+    const {
+      schoolName,
+      degree,
+      startDate,
+      endDate,
+      updateItem,
+      keyID,
+      itemIndex,
+    } = this.props;
     const startEdit = () => {
       this.setState({ editing: true });
     };
     const submitEdit = () => {
       this.setState({ editing: false });
+      console.log(this.props);
+      updateItem(
+        this.state.schoolNameInput,
+        this.state.degreeInput,
+        this.state.startDateInput,
+        this.state.endDateInput,
+        itemIndex
+      );
     };
     return (
       <>
         {!this.state.editing ? (
           <div>
-            <p className="school-name">{this.state.schoolName}</p>
-            <p className="degree">{this.state.degree}</p>
-            <p className="start-date">{this.state.studyDates.start}</p>
-            <p className="end-date">{this.state.studyDates.end}</p>
+            <p className="school-name">{schoolName}</p>
+            <p className="degree">{degree}</p>
+            <p className="start-date">{startDate}</p>
+            <p className="end-date">{endDate}</p>
           </div>
         ) : (
           <form>
@@ -48,7 +69,7 @@ class EducationElement extends React.Component {
               School Name
               <input
                 type={"text"}
-                value={this.state.schoolName}
+                value={this.state.schoolNameInput}
                 onChange={(e) => updateInput(e, "schoolName")}
               />
             </label>
@@ -56,7 +77,7 @@ class EducationElement extends React.Component {
               Degree
               <input
                 type={"text"}
-                value={this.state.degree}
+                value={this.state.degreeInput}
                 onChange={(e) => updateInput(e, "degree")}
               />
             </label>
@@ -64,7 +85,7 @@ class EducationElement extends React.Component {
               Start Date
               <input
                 type={"date"}
-                value={this.state.studyDates.start}
+                value={this.state.startDateInput}
                 onChange={(e) => updateInput(e, "startDate")}
               />
             </label>
@@ -72,7 +93,7 @@ class EducationElement extends React.Component {
               End Date
               <input
                 type={"date"}
-                value={this.state.studyDates.end}
+                value={this.state.endDateInput}
                 onChange={(e) => updateInput(e, "endDate")}
               />
             </label>

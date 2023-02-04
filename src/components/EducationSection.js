@@ -25,15 +25,15 @@ class EducationSection extends React.Component {
       newEndDate,
       itemIndex
     ) => {
-      const updatedItems = this.state.items;
-      const itemToUpdate = updatedItems.find((item, index) => {
+      const itemsCopy = this.state.items;
+      const itemToUpdate = itemsCopy.find((item, index) => {
         return Number(itemIndex) === index;
       });
       itemToUpdate.schoolName = newSchool;
       itemToUpdate.degree = newDegree;
       itemToUpdate.studyDates.start = newStartDate;
       itemToUpdate.studyDates.end = newEndDate;
-      this.setState({ items: updatedItems });
+      this.setState({ items: itemsCopy });
     };
     const addItem = () => {
       this.setState({

@@ -52,7 +52,7 @@ class EducationElement extends React.Component {
         ) : (
           <form>
             <label>
-              School Name
+              School Name:
               <input
                 type={"text"}
                 value={this.state.schoolNameInput}
@@ -60,7 +60,7 @@ class EducationElement extends React.Component {
               />
             </label>
             <label>
-              Degree
+              Degree:
               <input
                 type={"text"}
                 value={this.state.degreeInput}
@@ -68,7 +68,7 @@ class EducationElement extends React.Component {
               />
             </label>
             <label>
-              Start Date
+              Start Date:
               <input
                 type={"date"}
                 value={this.state.startDateInput}
@@ -76,7 +76,7 @@ class EducationElement extends React.Component {
               />
             </label>
             <label>
-              End Date
+              End Date:
               <input
                 type={"date"}
                 value={this.state.endDateInput}

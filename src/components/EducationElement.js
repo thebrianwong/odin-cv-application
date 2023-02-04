@@ -1,5 +1,6 @@
 import React from "react";
 import EditSubmitButtons from "./EditSubmitButtons";
+import OnGoingCheckbox from "./OnGoingCheckbox";
 
 class EducationElement extends React.Component {
   constructor(props) {
@@ -26,6 +27,9 @@ class EducationElement extends React.Component {
       } else if (information === "onGoing") {
         this.setState({ onGoing: !this.state.onGoing });
       }
+    };
+    const handleCheck = () => {
+      this.setState({ onGoing: !this.state.onGoing });
     };
     const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
       this.props;
@@ -95,14 +99,10 @@ class EducationElement extends React.Component {
                 onChange={(e) => handleChange(e, "endDate")}
               />
             </label>
-            <label>
-              Ongoing:
-              <input
-                type={"checkbox"}
-                checked={this.state.onGoing}
-                onChange={(e) => handleChange(e, "onGoing")}
-              />
-            </label>
+            <OnGoingCheckbox
+              onGoing={this.state.onGoing}
+              handleCheck={handleCheck}
+            />
           </form>
         )}
         <EditSubmitButtons

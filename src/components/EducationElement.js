@@ -1,5 +1,6 @@
 import React from "react";
 import EditSubmitButtons from "./EditSubmitButtons";
+import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
 
 class EducationElement extends React.Component {
@@ -15,16 +16,18 @@ class EducationElement extends React.Component {
     };
   }
   render() {
-    const handleChange = (e, information) => {
-      if (information === "schoolName") {
-        this.setState({ schoolNameInput: e.target.value });
-      } else if (information === "degree") {
-        this.setState({ degreeInput: e.target.value });
-      } else if (information === "startDate") {
-        this.setState({ startDateInput: e.target.value });
-      } else if (information === "endDate") {
-        this.setState({ endDateInput: e.target.value });
-      } else if (information === "onGoing") {
+    const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
+      this.props;
+    const handleChange = (value, informationType) => {
+      if (informationType === "schoolName") {
+        this.setState({ schoolNameInput: value });
+      } else if (informationType === "degree") {
+        this.setState({ degreeInput: value });
+      } else if (informationType === "startDate") {
+        this.setState({ startDateInput: value });
+      } else if (informationType === "endDate") {
+        this.setState({ endDateInput: value });
+      } else if (informationType === "onGoing") {
         this.setState({ onGoing: !this.state.onGoing });
       }
     };
@@ -66,39 +69,35 @@ class EducationElement extends React.Component {
           </div>
         ) : (
           <form>
-            <label>
-              School Name:
-              <input
-                type={"text"}
-                value={this.state.schoolNameInput}
-                onChange={(e) => handleChange(e, "schoolName")}
-              />
-            </label>
-            <label>
-              Degree:
-              <input
-                type={"text"}
-                value={this.state.degreeInput}
-                onChange={(e) => handleChange(e, "degree")}
-              />
-            </label>
-            <label>
-              Start Date:
-              <input
-                type={"date"}
-                value={this.state.startDateInput}
-                onChange={(e) => handleChange(e, "startDate")}
-              />
-            </label>
-            <label>
-              End Date:
-              <input
-                disabled={this.state.onGoing}
-                type={"date"}
-                value={this.state.endDateInput}
-                onChange={(e) => handleChange(e, "endDate")}
-              />
-            </label>
+            <Input
+              label="School Name"
+              previousValue={this.state.schoolNameInput}
+              inputType="text"
+              informationType="schoolName"
+              sendChanges={handleChange}
+            />
+            <Input
+              label="Degree"
+              previousValue={this.state.degreeInput}
+              inputType="text"
+              informationType="degree"
+              sendChanges={handleChange}
+            />
+            <Input
+              label="Start Date"
+              previousValue={this.state.startDateInput}
+              inputType="date"
+              informationType="startDate"
+              sendChanges={handleChange}
+            />
+            <Input
+              label="End Date"
+              previousValue={this.state.endDateInput}
+              inputType="date"
+              informationType="endDate"
+              onGoing={this.state.onGoing}
+              sendChanges={handleChange}
+            />
             <OnGoingCheckbox
               onGoing={this.state.onGoing}
               handleCheck={handleCheck}

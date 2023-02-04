@@ -13,7 +13,7 @@ class EducationElement extends React.Component {
     };
   }
   render() {
-    const updateInput = (e, information) => {
+    const handleChange = (e, information) => {
       if (information === "schoolName") {
         this.setState({ schoolNameInput: e.target.value });
       } else if (information === "degree") {
@@ -56,7 +56,7 @@ class EducationElement extends React.Component {
               <input
                 type={"text"}
                 value={this.state.schoolNameInput}
-                onChange={(e) => updateInput(e, "schoolName")}
+                onChange={(e) => handleChange(e, "schoolName")}
               />
             </label>
             <label>
@@ -64,7 +64,7 @@ class EducationElement extends React.Component {
               <input
                 type={"text"}
                 value={this.state.degreeInput}
-                onChange={(e) => updateInput(e, "degree")}
+                onChange={(e) => handleChange(e, "degree")}
               />
             </label>
             <label>
@@ -72,7 +72,7 @@ class EducationElement extends React.Component {
               <input
                 type={"date"}
                 value={this.state.startDateInput}
-                onChange={(e) => updateInput(e, "startDate")}
+                onChange={(e) => handleChange(e, "startDate")}
               />
             </label>
             <label>
@@ -80,7 +80,7 @@ class EducationElement extends React.Component {
               <input
                 type={"date"}
                 value={this.state.endDateInput}
-                onChange={(e) => updateInput(e, "endDate")}
+                onChange={(e) => handleChange(e, "endDate")}
               />
             </label>
           </form>

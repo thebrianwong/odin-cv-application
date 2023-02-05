@@ -9,7 +9,6 @@ class WorkHistoryElement extends React.Component {
     this.state = {
       companyNameInput: props.companyName,
       titleInput: props.title,
-      tasksInput: props.tasks,
       startDateInput: props.startDate,
       endDateInput: props.endDate,
       onGoing: false,
@@ -51,9 +50,6 @@ class WorkHistoryElement extends React.Component {
         case "title":
           this.setState({ titleInput: value });
           break;
-        case "tasks":
-          this.setState({ tasksInput: value });
-          break;
         case "startDate":
           this.setState({ startDateInput: value });
           break;
@@ -84,7 +80,6 @@ class WorkHistoryElement extends React.Component {
       updateItem(
         this.state.companyNameInput,
         this.state.titleInput,
-        this.state.tasksInput,
         this.state.startDateInput,
         endDate,
         itemIndex

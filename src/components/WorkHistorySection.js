@@ -31,7 +31,6 @@ class WorkHistorySection extends React.Component {
     const updateItem = (
       newCompany,
       newTitle,
-      newTasks,
       newStartDate,
       newEndDate,
       itemIndex
@@ -40,7 +39,6 @@ class WorkHistorySection extends React.Component {
       const itemToUpdate = itemsCopy[itemIndex];
       itemToUpdate.companyName = newCompany;
       itemToUpdate.title = newTitle;
-      itemToUpdate.tasks = newTasks;
       itemToUpdate.employmentDates.start = newStartDate;
       itemToUpdate.employmentDates.end = newEndDate;
       this.setState({ items: itemsCopy });

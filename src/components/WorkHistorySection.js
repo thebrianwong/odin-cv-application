@@ -1,5 +1,6 @@
 import React from "react";
 import AddItemButton from "./AddItemButton";
+import WorkHistoryElement from "./WorkHistoryElement";
 
 class WorkHistorySection extends React.Component {
   constructor(props) {

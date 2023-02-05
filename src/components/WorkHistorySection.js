@@ -8,6 +8,26 @@ class WorkHistorySection extends React.Component {
     this.state = { items: [], IDCounter: 0 };
   }
   render() {
+    const updateTask = (newDescription, itemIndex, taskIndex) => {
+      const itemsCopy = this.state.items;
+      const itemContainingTask = itemsCopy[itemIndex];
+      const tasksCopy = itemContainingTask.tasks;
+      const taskToUpdate = tasksCopy[taskIndex];
+      taskToUpdate.description = newDescription;
+      this.setState({ items: itemsCopy });
+    };
+    const addTask = (itemIndex) => {
+      const itemsCopy = this.state.items;
+      const itemToAddTo = itemsCopy[itemIndex];
+      const tasks = itemToAddTo.tasks;
+      const newTaskID = itemToAddTo.IDCounter;
+      tasks.push({
+        description: "",
+        keyID: newTaskID,
+      });
+      itemToAddTo.IDCounter += 1;
+      this.setState({ items: itemsCopy });
+    };
     const updateItem = (
       newCompany,
       newTitle,
@@ -51,7 +71,8 @@ class WorkHistorySection extends React.Component {
             startDate={item.employmentDates.start}
             endDate={item.employmentDates.end}
             updateItem={updateItem}
-            addItem={addItem}
+            addTask={addTask}
+            updateTask={updateTask}
           />
         ))}
         <AddItemButton addItem={addItem} />

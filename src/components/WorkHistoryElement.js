@@ -1,7 +1,9 @@
 import React from "react";
+import AddItemButton from "./AddItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
+import WorkHistoryBulletPoint from "./WorkHistoryBulletPoint";
 
 class WorkHistoryElement extends React.Component {
   constructor(props) {
@@ -25,23 +27,9 @@ class WorkHistoryElement extends React.Component {
       startDate,
       endDate,
       updateItem,
-      addItem,
+      addTask,
+      updateTask,
     } = this.props;
-    const updateTask = (newDescription, itemIndex) => {
-      const tasksCopy = this.state.tasksInput;
-      const taskToUpdate = tasksCopy[itemIndex];
-      taskToUpdate.description = newDescription;
-      this.setState({ tasksInput: tasksCopy });
-    };
-    const addTask = () => {
-      this.setState({
-        tasksInput: this.state.tasksInput.concat({
-          description: "",
-          keyID: this.state.IDCounter,
-        }),
-        IDCounter: this.state.IDCounter + 1,
-      });
-    };
     const handleChange = (value, informationType) => {
       switch (informationType) {
         case "companyName":
@@ -133,15 +121,17 @@ class WorkHistoryElement extends React.Component {
         )}
         <ul>
           Responsibilities:
-          {tasks.map((task, index) => {
+          {tasks.map((task, index) => (
             <WorkHistoryBulletPoint
-              itemIndex={index}
+              itemIndex={itemIndex}
+              taskIndex={index}
               key={task.keyID}
               description={task.description}
               updateTask={updateTask}
-            />;
-          })}
+            />
+          ))}
         </ul>
+        <AddItemButton addItem={() => addTask(itemIndex)} />
         <EditSubmitButtons
           editing={this.state.editing}
           startEdit={startEdit}

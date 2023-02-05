@@ -51,6 +51,7 @@ class WorkHistorySection extends React.Component {
           tasks: [],
           employmentDates: { start: "", end: "" },
           keyID: this.state.IDCounter,
+          IDCounter: 0,
         }),
         IDCounter: this.state.IDCounter + 1,
       });

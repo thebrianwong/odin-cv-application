@@ -14,6 +14,7 @@ class WorkHistoryElement extends React.Component {
       endDateInput: props.endDate,
       onGoing: false,
       editing: true,
+      IDCounter: 0,
     };
   }
   render() {
@@ -27,6 +28,21 @@ class WorkHistoryElement extends React.Component {
       updateItem,
       addItem,
     } = this.props;
+    const updateTask = (newDescription, itemIndex) => {
+      const tasksCopy = this.state.tasksInput;
+      const taskToUpdate = tasksCopy[itemIndex];
+      taskToUpdate.description = newDescription;
+      this.setState({ tasksInput: tasksCopy });
+    };
+    const addTask = () => {
+      this.setState({
+        tasksInput: this.state.tasksInput.concat({
+          description: "",
+          keyID: this.state.IDCounter,
+        }),
+        IDCounter: this.state.IDCounter + 1,
+      });
+    };
     const handleChange = (value, informationType) => {
       switch (informationType) {
         case "companyName":
@@ -122,8 +138,13 @@ class WorkHistoryElement extends React.Component {
         )}
         <ul>
           Responsibilities:
-          {tasks.map((task) => {
-            <WorkHistoryBulletPoint />;
+          {tasks.map((task, index) => {
+            <WorkHistoryBulletPoint
+              itemIndex={index}
+              key={task.keyID}
+              description={task.description}
+              updateTask={updateTask}
+            />;
           })}
         </ul>
         <EditSubmitButtons

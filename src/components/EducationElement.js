@@ -19,16 +19,24 @@ class EducationElement extends React.Component {
     const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
       this.props;
     const handleChange = (value, informationType) => {
-      if (informationType === "schoolName") {
-        this.setState({ schoolNameInput: value });
-      } else if (informationType === "degree") {
-        this.setState({ degreeInput: value });
-      } else if (informationType === "startDate") {
-        this.setState({ startDateInput: value });
-      } else if (informationType === "endDate") {
-        this.setState({ endDateInput: value });
-      } else if (informationType === "onGoing") {
-        this.setState({ onGoing: !this.state.onGoing });
+      switch (informationType) {
+        case "schoolName":
+          this.setState({ schoolNameInput: value });
+          break;
+        case "degree":
+          this.setState({ degreeInput: value });
+          break;
+        case "startDate":
+          this.setState({ startDateInput: value });
+          break;
+        case "endDate":
+          this.setState({ endDateInput: value });
+          break;
+        case "onGoing":
+          this.setState({ onGoing: !this.state.onGoing });
+          break;
+        default:
+          break;
       }
     };
     const resolveEndDate = () => {

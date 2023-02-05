@@ -15,7 +15,7 @@ class Input extends React.Component {
     };
     return (
       <label>
-        {label}:
+        {label.length > 0 && `${label}:`}
         <input
           disabled={onGoing}
           type={inputType}

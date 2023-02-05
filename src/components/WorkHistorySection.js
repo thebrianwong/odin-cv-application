@@ -17,9 +17,7 @@ class WorkHistorySection extends React.Component {
       itemIndex
     ) => {
       const itemsCopy = this.state.items;
-      const itemToUpdate = itemsCopy.find((item, index) => {
-        return Number(itemIndex) === index;
-      });
+      const itemToUpdate = itemsCopy[itemIndex];
       itemToUpdate.companyName = newCompany;
       itemToUpdate.title = newTitle;
       itemToUpdate.tasks = newTasks;

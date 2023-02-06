@@ -30,7 +30,7 @@ class WorkHistoryBulletPoint extends React.Component {
               <DeleteItemButton
                 itemIndex={itemIndex}
                 taskIndex={taskIndex}
-                deleteItem={deleteTask}
+                deleteFromCollection={deleteTask}
               />
             </>
           ) : (

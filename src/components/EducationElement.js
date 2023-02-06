@@ -79,7 +79,10 @@ class EducationElement extends React.Component {
               <p className="start-date">{startDate}</p>
               <p className="end-date">{endDate}</p>
             </div>
-            <DeleteItemButton itemIndex={itemIndex} deleteItem={deleteItem} />
+            <DeleteItemButton
+              itemIndex={itemIndex}
+              deleteFromCollection={deleteItem}
+            />
           </>
         ) : (
           <form>

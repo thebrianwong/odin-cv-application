@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 
@@ -8,7 +9,8 @@ class WorkHistoryBulletPoint extends React.Component {
     this.state = { inputValue: "", editing: true };
   }
   render() {
-    const { itemIndex, taskIndex, description, updateTask } = this.props;
+    const { itemIndex, taskIndex, description, updateTask, deleteTask } =
+      this.props;
     const handleChanges = (newValue) => {
       this.setState({ inputValue: newValue });
     };
@@ -23,7 +25,14 @@ class WorkHistoryBulletPoint extends React.Component {
       <li>
         <div>
           {!this.state.editing ? (
-            <p className="task-bullet-point">{description}</p>
+            <>
+              <p className="task-bullet-point">{description}</p>
+              <DeleteItemButton
+                itemIndex={itemIndex}
+                taskIndex={taskIndex}
+                deleteItem={deleteTask}
+              />
+            </>
           ) : (
             <Input
               label=""

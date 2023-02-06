@@ -49,6 +49,20 @@ class WorkHistorySection extends React.Component {
         }),
       });
     };
+    const deleteTask = (itemIndex, taskIndex) => {
+      this.setState({
+        items: this.state.items.map((item) => {
+          if (item.itemID === itemIndex) {
+            return {
+              ...item,
+              tasks: item.tasks.filter((task) => task.taskID !== taskIndex),
+            };
+          } else {
+            return item;
+          }
+        }),
+      });
+    };
     const updateItem = (
       newCompany,
       newTitle,
@@ -107,6 +121,7 @@ class WorkHistorySection extends React.Component {
             addTask={addTask}
             updateTask={updateTask}
             deleteItem={deleteItem}
+            deleteTask={deleteTask}
           />
         ))}
         <AddItemButton buttonLabel="Add new work history" addItem={addItem} />

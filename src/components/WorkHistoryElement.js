@@ -31,6 +31,7 @@ class WorkHistoryElement extends React.Component {
       addTask,
       updateTask,
       deleteItem,
+      deleteTask,
     } = this.props;
     const handleChange = (value, informationType) => {
       switch (informationType) {
@@ -133,6 +134,7 @@ class WorkHistoryElement extends React.Component {
               key={task.taskID}
               description={task.description}
               updateTask={updateTask}
+              deleteTask={deleteTask}
             />
           ))}
         </ul>

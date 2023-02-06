@@ -5,8 +5,8 @@ class AddItemButton extends React.Component {
     super(props);
   }
   render() {
-    const { addItem } = this.props;
-    return <button onClick={addItem}>Add new entry</button>;
+    const { buttonLabel, addItem } = this.props;
+    return <button onClick={addItem}>{buttonLabel}</button>;
   }
 }
 

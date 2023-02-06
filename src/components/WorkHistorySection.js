@@ -74,7 +74,7 @@ class WorkHistorySection extends React.Component {
             updateTask={updateTask}
           />
         ))}
-        <AddItemButton addItem={addItem} />
+        <AddItemButton buttonLabel="Add new work history" addItem={addItem} />
       </div>
     );
   }

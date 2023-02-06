@@ -131,7 +131,10 @@ class WorkHistoryElement extends React.Component {
             />
           ))}
         </ul>
-        <AddItemButton addItem={() => addTask(itemIndex)} />
+        <AddItemButton
+          buttonLabel="Add new task"
+          addItem={() => addTask(itemIndex)}
+        />
         <EditSubmitButtons
           editing={this.state.editing}
           startEdit={startEdit}

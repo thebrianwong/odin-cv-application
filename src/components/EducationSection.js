@@ -55,7 +55,7 @@ class EducationSection extends React.Component {
             addItem={addItem}
           />
         ))}
-        <AddItemButton addItem={addItem} />
+        <AddItemButton buttonLabel="Add new education" addItem={addItem} />
       </div>
     );
   }

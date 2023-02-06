@@ -9,24 +9,45 @@ class WorkHistorySection extends React.Component {
   }
   render() {
     const updateTask = (newDescription, itemIndex, taskIndex) => {
-      const itemsCopy = this.state.items;
-      const itemContainingTask = itemsCopy[itemIndex];
-      const tasksCopy = itemContainingTask.tasks;
-      const taskToUpdate = tasksCopy[taskIndex];
-      taskToUpdate.description = newDescription;
-      this.setState({ items: itemsCopy });
+      this.setState({
+        items: this.state.items.map((item) => {
+          if (item.itemID === itemIndex) {
+            return {
+              ...item,
+              tasks: item.tasks.map((task) => {
+                if (task.taskID === taskIndex) {
+                  return {
+                    ...task,
+                    description: newDescription,
+                  };
+                } else {
+                  return task;
+                }
+              }),
+            };
+          } else {
+            return item;
+          }
+        }),
+      });
     };
     const addTask = (itemIndex) => {
-      const itemsCopy = this.state.items;
-      const itemToAddTo = itemsCopy[itemIndex];
-      const tasks = itemToAddTo.tasks;
-      const newTaskID = itemToAddTo.IDCounter;
-      tasks.push({
-        description: "",
-        keyID: newTaskID,
+      this.setState({
+        items: this.state.items.map((item) => {
+          if (item.itemID === itemIndex) {
+            return {
+              ...item,
+              tasks: item.tasks.concat({
+                description: "",
+                taskID: item.IDCounter,
+              }),
+              IDCounter: item.IDCounter + 1,
+            };
+          } else {
+            return item;
+          }
+        }),
       });
-      itemToAddTo.IDCounter += 1;
-      this.setState({ items: itemsCopy });
     };
     const updateItem = (
       newCompany,

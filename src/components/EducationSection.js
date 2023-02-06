@@ -44,6 +44,12 @@ class EducationSection extends React.Component {
         IDCounter: this.state.IDCounter + 1,
       });
     };
+    const deleteItem = (itemIndex) => {
+      this.setState({
+        ...this.state,
+        items: this.state.items.filter((item) => item.itemID !== itemIndex),
+      });
+    };
     return (
       <div className="education">
         <h2>Education</h2>
@@ -58,6 +64,7 @@ class EducationSection extends React.Component {
             endDate={item.studyDates.end}
             updateItem={updateItem}
             addItem={addItem}
+            deleteItem={deleteItem}
           />
         ))}
         <AddItemButton buttonLabel="Add new education" addItem={addItem} />

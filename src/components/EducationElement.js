@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
@@ -16,8 +17,15 @@ class EducationElement extends React.Component {
     };
   }
   render() {
-    const { schoolName, degree, startDate, endDate, updateItem, itemIndex } =
-      this.props;
+    const {
+      schoolName,
+      degree,
+      startDate,
+      endDate,
+      updateItem,
+      deleteItem,
+      itemIndex,
+    } = this.props;
     const handleChange = (value, informationType) => {
       switch (informationType) {
         case "schoolName":
@@ -64,12 +72,15 @@ class EducationElement extends React.Component {
     return (
       <div>
         {!this.state.editing ? (
-          <div>
-            <p className="school-name">{schoolName}</p>
-            <p className="degree">{degree}</p>
-            <p className="start-date">{startDate}</p>
-            <p className="end-date">{endDate}</p>
-          </div>
+          <>
+            <div>
+              <p className="school-name">{schoolName}</p>
+              <p className="degree">{degree}</p>
+              <p className="start-date">{startDate}</p>
+              <p className="end-date">{endDate}</p>
+            </div>
+            <DeleteItemButton itemIndex={itemIndex} deleteItem={deleteItem} />
+          </>
         ) : (
           <form>
             <Input

@@ -5,8 +5,11 @@ class EditSubmitButtons extends React.Component {
     const { editing, startEdit, submitEdit } = this.props;
     return (
       <>
-        {!editing && <button onClick={startEdit}>Edit</button>}
-        {editing && <button onClick={submitEdit}>Update</button>}
+        {!editing ? (
+          <button onClick={startEdit}>Edit</button>
+        ) : (
+          <button onClick={submitEdit}>Update</button>
+        )}
       </>
     );
   }

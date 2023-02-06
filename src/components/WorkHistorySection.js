@@ -35,13 +35,20 @@ class WorkHistorySection extends React.Component {
       newEndDate,
       itemIndex
     ) => {
-      const itemsCopy = this.state.items;
-      const itemToUpdate = itemsCopy[itemIndex];
-      itemToUpdate.companyName = newCompany;
-      itemToUpdate.title = newTitle;
-      itemToUpdate.employmentDates.start = newStartDate;
-      itemToUpdate.employmentDates.end = newEndDate;
-      this.setState({ items: itemsCopy });
+      this.setState({
+        items: this.state.items.map((item) => {
+          if (item.itemID === itemIndex) {
+            return {
+              ...item,
+              companyName: newCompany,
+              title: newTitle,
+              employmentDates: { start: newStartDate, end: newEndDate },
+            };
+          } else {
+            return item;
+          }
+        }),
+      });
     };
     const addItem = () => {
       this.setState({
@@ -50,7 +57,7 @@ class WorkHistorySection extends React.Component {
           title: "",
           tasks: [],
           employmentDates: { start: "", end: "" },
-          keyID: this.state.IDCounter,
+          itemID: this.state.IDCounter,
           IDCounter: 0,
         }),
         IDCounter: this.state.IDCounter + 1,
@@ -60,10 +67,10 @@ class WorkHistorySection extends React.Component {
       <div className="work-history">
         <h2>Work History</h2>
         {this.state.items.length === 0 && <p>Add your work history here!</p>}
-        {this.state.items.map((item, index) => (
+        {this.state.items.map((item) => (
           <WorkHistoryElement
-            itemIndex={index}
-            key={item.keyID}
+            itemIndex={item.itemID}
+            key={item.itemID}
             companyName={item.companyName}
             title={item.title}
             tasks={item.tasks}

@@ -124,8 +124,8 @@ class WorkHistoryElement extends React.Component {
           {tasks.map((task, index) => (
             <WorkHistoryBulletPoint
               itemIndex={itemIndex}
-              taskIndex={index}
-              key={task.keyID}
+              taskIndex={task.taskID}
+              key={task.taskID}
               description={task.description}
               updateTask={updateTask}
             />

@@ -53,6 +53,7 @@ class EducationSection extends React.Component {
     return (
       <div className="education">
         <h2>Education</h2>
+        <AddItemButton buttonLabel="Add new education" addItem={addItem} />
         {this.state.items.length === 0 && <p>Add your education here!</p>}
         {this.state.items.map((item) => (
           <EducationElement
@@ -67,7 +68,6 @@ class EducationSection extends React.Component {
             deleteItem={deleteItem}
           />
         ))}
-        <AddItemButton buttonLabel="Add new education" addItem={addItem} />
       </div>
     );
   }

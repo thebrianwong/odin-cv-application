@@ -107,6 +107,7 @@ class WorkHistorySection extends React.Component {
     return (
       <div className="work-history">
         <h2>Work History</h2>
+        <AddItemButton buttonLabel="Add new work history" addItem={addItem} />
         {this.state.items.length === 0 && <p>Add your work history here!</p>}
         {this.state.items.map((item) => (
           <WorkHistoryElement
@@ -124,7 +125,6 @@ class WorkHistorySection extends React.Component {
             deleteTask={deleteTask}
           />
         ))}
-        <AddItemButton buttonLabel="Add new work history" addItem={addItem} />
       </div>
     );
   }

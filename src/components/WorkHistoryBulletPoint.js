@@ -25,14 +25,7 @@ class WorkHistoryBulletPoint extends React.Component {
       <li>
         <div>
           {!this.state.editing ? (
-            <>
-              <p className="task-bullet-point">{description}</p>
-              <DeleteItemButton
-                itemIndex={itemIndex}
-                taskIndex={taskIndex}
-                deleteFromCollection={deleteTask}
-              />
-            </>
+            <p className="task-bullet-point">{description}</p>
           ) : (
             <Input
               label=""
@@ -46,6 +39,13 @@ class WorkHistoryBulletPoint extends React.Component {
             startEdit={startEdit}
             submitEdit={submitEdit}
           />
+          {!this.state.editing && (
+            <DeleteItemButton
+              itemIndex={itemIndex}
+              taskIndex={taskIndex}
+              deleteFromCollection={deleteTask}
+            />
+          )}
         </div>
       </li>
     );

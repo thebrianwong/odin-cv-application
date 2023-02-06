@@ -72,18 +72,12 @@ class EducationElement extends React.Component {
     return (
       <div>
         {!this.state.editing ? (
-          <>
-            <div>
-              <p className="school-name">{schoolName}</p>
-              <p className="degree">{degree}</p>
-              <p className="start-date">{startDate}</p>
-              <p className="end-date">{endDate}</p>
-            </div>
-            <DeleteItemButton
-              itemIndex={itemIndex}
-              deleteFromCollection={deleteItem}
-            />
-          </>
+          <div>
+            <p className="school-name">{schoolName}</p>
+            <p className="degree">{degree}</p>
+            <p className="start-date">{startDate}</p>
+            <p className="end-date">{endDate}</p>
+          </div>
         ) : (
           <form>
             <Input
@@ -126,6 +120,12 @@ class EducationElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
+        {!this.state.editing && (
+          <DeleteItemButton
+            itemIndex={itemIndex}
+            deleteFromCollection={deleteItem}
+          />
+        )}
       </div>
     );
   }

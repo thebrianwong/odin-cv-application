@@ -18,15 +18,20 @@ class EducationSection extends React.Component {
       newEndDate,
       itemIndex
     ) => {
-      const itemsCopy = this.state.items;
-      const itemToUpdate = itemsCopy.find((item, index) => {
-        return Number(itemIndex) === index;
+      this.setState({
+        items: this.state.items.map((item) => {
+          if (item.itemID === itemIndex) {
+            return {
+              ...item,
+              schoolName: newSchool,
+              degree: newDegree,
+              studyDates: { start: newStartDate, end: newEndDate },
+            };
+          } else {
+            return item;
+          }
+        }),
       });
-      itemToUpdate.schoolName = newSchool;
-      itemToUpdate.degree = newDegree;
-      itemToUpdate.studyDates.start = newStartDate;
-      itemToUpdate.studyDates.end = newEndDate;
-      this.setState({ items: itemsCopy });
     };
     const addItem = () => {
       this.setState({
@@ -34,7 +39,7 @@ class EducationSection extends React.Component {
           schoolName: "",
           degree: "",
           studyDates: { start: "", end: "" },
-          keyID: this.state.IDCounter,
+          itemID: this.state.IDCounter,
         }),
         IDCounter: this.state.IDCounter + 1,
       });
@@ -43,10 +48,10 @@ class EducationSection extends React.Component {
       <div className="education">
         <h2>Education</h2>
         {this.state.items.length === 0 && <p>Add your education here!</p>}
-        {this.state.items.map((item, index) => (
+        {this.state.items.map((item) => (
           <EducationElement
-            itemIndex={index}
-            key={item.keyID}
+            itemIndex={item.itemID}
+            key={item.itemID}
             schoolName={item.schoolName}
             degree={item.degree}
             startDate={item.studyDates.start}

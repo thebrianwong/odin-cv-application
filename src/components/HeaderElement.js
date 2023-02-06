@@ -19,10 +19,12 @@ class HeaderElement extends React.Component {
     const updateInput = (e) => {
       this.setState({ inputValue: e.target.value });
     };
-    const startEdit = () => {
+    const startEdit = (e) => {
+      e.preventDefault();
       this.setState({ editing: true });
     };
-    const submitEdit = () => {
+    const submitEdit = (e) => {
+      e.preventDefault();
       this.setState({ editing: false });
     };
     return (

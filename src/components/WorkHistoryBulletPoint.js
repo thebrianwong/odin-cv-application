@@ -28,6 +28,7 @@ class WorkHistoryBulletPoint extends React.Component {
             <p className="task-bullet-point">{description}</p>
           ) : (
             <Input
+              focus={true}
               label=""
               previousValue={this.state.inputValue}
               inputType="text"

@@ -81,6 +81,7 @@ class EducationElement extends React.Component {
         ) : (
           <form>
             <Input
+              focus={true}
               label="School Name"
               previousValue={this.state.schoolNameInput}
               inputType="text"

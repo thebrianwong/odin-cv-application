@@ -88,6 +88,7 @@ class WorkHistoryElement extends React.Component {
         ) : (
           <form>
             <Input
+              focus={true}
               label="Company Name"
               previousValue={this.state.companyNameInput}
               inputType="text"

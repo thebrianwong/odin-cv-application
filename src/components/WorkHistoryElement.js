@@ -1,5 +1,6 @@
 import React from "react";
 import AddItemButton from "./AddItemButton";
+import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
@@ -29,6 +30,7 @@ class WorkHistoryElement extends React.Component {
       updateItem,
       addTask,
       updateTask,
+      deleteItem,
     } = this.props;
     const handleChange = (value, informationType) => {
       switch (informationType) {
@@ -76,12 +78,15 @@ class WorkHistoryElement extends React.Component {
     return (
       <div>
         {!this.state.editing ? (
-          <div>
-            <p className="company-name">{companyName}</p>
-            <p className="title">{title}</p>
-            <p className="start-date">{startDate}</p>
-            <p className="end-date">{endDate}</p>
-          </div>
+          <>
+            <div>
+              <p className="company-name">{companyName}</p>
+              <p className="title">{title}</p>
+              <p className="start-date">{startDate}</p>
+              <p className="end-date">{endDate}</p>
+            </div>
+            <DeleteItemButton itemIndex={itemIndex} deleteItem={deleteItem} />
+          </>
         ) : (
           <form>
             <Input

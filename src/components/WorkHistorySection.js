@@ -84,6 +84,12 @@ class WorkHistorySection extends React.Component {
         IDCounter: this.state.IDCounter + 1,
       });
     };
+    const deleteItem = (itemIndex) => {
+      this.setState({
+        ...this.state,
+        items: this.state.items.filter((item) => item.itemID !== itemIndex),
+      });
+    };
     return (
       <div className="work-history">
         <h2>Work History</h2>
@@ -100,6 +106,7 @@ class WorkHistorySection extends React.Component {
             updateItem={updateItem}
             addTask={addTask}
             updateTask={updateTask}
+            deleteItem={deleteItem}
           />
         ))}
         <AddItemButton buttonLabel="Add new work history" addItem={addItem} />

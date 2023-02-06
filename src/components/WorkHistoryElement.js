@@ -128,8 +128,8 @@ class WorkHistoryElement extends React.Component {
             />
           </form>
         )}
+        <h3>Responsibilities</h3>
         <ul>
-          Responsibilities:
           {tasks.map((task, index) => (
             <WorkHistoryBulletPoint
               itemIndex={itemIndex}

@@ -1,10 +1,11 @@
 import React from "react";
 import EditSubmitButtons from "./EditSubmitButtons";
+import Input from "./Input";
 
 class HeaderElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { inputValue: "", editing: false };
+    this.state = { value: "", editing: false };
   }
   render() {
     const { headerType, inputType } = this.props;
@@ -16,8 +17,8 @@ class HeaderElement extends React.Component {
     } else if (headerType === "phone") {
       placeholder = "Phone Number";
     }
-    const updateInput = (e) => {
-      this.setState({ inputValue: e.target.value });
+    const handleChange = (newValue) => {
+      this.setState({ value: newValue });
     };
     const startEdit = (e) => {
       e.preventDefault();
@@ -31,16 +32,15 @@ class HeaderElement extends React.Component {
       <div>
         {!this.state.editing ? (
           <p>
-            {this.state.inputValue.length === 0
-              ? placeholder
-              : this.state.inputValue}
+            {this.state.value.length === 0 ? placeholder : this.state.value}
           </p>
         ) : (
-          <input
-            type={inputType}
-            value={this.state.inputValue}
-            onChange={(e) => updateInput(e)}
-          ></input>
+          <Input
+            focus={true}
+            previousValue={this.state.value}
+            inputType={inputType}
+            sendChanges={handleChange}
+          />
         )}
         <EditSubmitButtons
           editing={this.state.editing}

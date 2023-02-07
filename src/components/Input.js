@@ -23,7 +23,7 @@ class Input extends React.Component {
     };
     return (
       <label>
-        {label.length > 0 && `${label}:`}
+        {label && label.length > 0 && `${label}:`}
         <input
           ref={focus ? this.input : undefined}
           disabled={onGoing}

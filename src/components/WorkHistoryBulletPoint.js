@@ -29,7 +29,6 @@ class WorkHistoryBulletPoint extends React.Component {
           ) : (
             <Input
               focus={true}
-              label=""
               previousValue={this.state.inputValue}
               inputType="text"
               sendChanges={handleChanges}

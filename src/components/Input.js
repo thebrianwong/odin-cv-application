@@ -13,13 +13,21 @@ class Input extends React.Component {
       this.input.current.focus();
     }
   }
+  componentWillUnmount() {
+    console.log("INPUT 1");
+    const { informationType, sendChanges } = this.props;
+    console.log(this.state.inputValue, informationType);
+    sendChanges(this.state.inputValue, informationType);
+    console.log("INPUT 2");
+  }
   render() {
     const { focus, label, inputType, informationType, onGoing, sendChanges } =
       this.props;
+    const test = () => {
+      return;
+    };
     const handleChanges = (e) => {
-      this.setState({ inputValue: e.target.value }, () =>
-        sendChanges(this.state.inputValue, informationType)
-      );
+      this.setState({ inputValue: e.target.value });
     };
     return (
       <label>

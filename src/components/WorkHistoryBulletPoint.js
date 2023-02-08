@@ -19,7 +19,9 @@ class WorkHistoryBulletPoint extends React.Component {
     };
     const submitEdit = () => {
       this.setState({ editing: false });
-      updateTask(this.state.value, itemIndex, taskIndex);
+      setTimeout(() => {
+        updateTask(this.state.value, itemIndex, taskIndex);
+      }, 0);
     };
     return (
       <li>

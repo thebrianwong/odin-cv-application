@@ -14,18 +14,11 @@ class Input extends React.Component {
     }
   }
   componentWillUnmount() {
-    console.log("INPUT 1");
     const { informationType, sendChanges } = this.props;
-    console.log(this.state.inputValue, informationType);
     sendChanges(this.state.inputValue, informationType);
-    console.log("INPUT 2");
   }
   render() {
-    const { focus, label, inputType, informationType, onGoing, sendChanges } =
-      this.props;
-    const test = () => {
-      return;
-    };
+    const { focus, label, inputType, onGoing } = this.props;
     const handleChanges = (e) => {
       this.setState({ inputValue: e.target.value });
     };

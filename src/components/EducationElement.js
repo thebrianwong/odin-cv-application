@@ -41,15 +41,7 @@ class EducationElement extends React.Component {
           this.setState({ endDateInput: value });
           break;
         case "onGoing":
-          this.setState({ onGoing: !this.state.onGoing }, () =>
-            updateItem(
-              this.state.schoolNameInput,
-              this.state.degreeInput,
-              this.state.startDateInput,
-              endDate,
-              itemIndex
-            )
-          );
+          this.setState({ onGoing: !this.state.onGoing });
           break;
         default:
           break;

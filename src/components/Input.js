@@ -14,11 +14,8 @@ class Input extends React.Component {
     }
   }
   componentWillUnmount() {
-    const { informationType, sendChanges, itemIndex, onGoing } = this.props;
-    console.log(this.state.inputValue, informationType);
-    const test = new Date();
-    console.log(test, test.getMilliseconds());
-    sendChanges(this.state.inputValue, informationType, itemIndex, onGoing);
+    const { informationType, sendChanges } = this.props;
+    sendChanges(this.state.inputValue, informationType);
   }
   render() {
     const { focus, label, inputType, onGoing } = this.props;

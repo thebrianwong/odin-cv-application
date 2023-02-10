@@ -60,16 +60,16 @@ class EducationElement extends React.Component {
     };
     const submitEdit = () => {
       this.setState({ editing: false });
-      // setTimeout(() => {
-      //   const endDate = resolveEndDate();
-      //   updateItem(
-      //     this.state.schoolNameInput,
-      //     this.state.degreeInput,
-      //     this.state.startDateInput,
-      //     endDate,
-      //     itemIndex
-      //   );
-      // }, 0);
+      setTimeout(() => {
+        const endDate = resolveEndDate();
+        updateItem(
+          this.state.schoolNameInput,
+          this.state.degreeInput,
+          this.state.startDateInput,
+          endDate,
+          itemIndex
+        );
+      }, 0);
     };
     return (
       <div>
@@ -88,24 +88,21 @@ class EducationElement extends React.Component {
               previousValue={this.state.schoolNameInput}
               inputType="text"
               informationType="schoolName"
-              itemIndex={itemIndex}
-              sendChanges={updateItem}
+              sendChanges={handleChange}
             />
             <Input
               label="Degree"
               previousValue={this.state.degreeInput}
               inputType="text"
               informationType="degree"
-              itemIndex={itemIndex}
-              sendChanges={updateItem}
+              sendChanges={handleChange}
             />
             <Input
               label="Start Date"
               previousValue={this.state.startDateInput}
               inputType="date"
               informationType="startDate"
-              itemIndex={itemIndex}
-              sendChanges={updateItem}
+              sendChanges={handleChange}
             />
             <Input
               label="End Date"
@@ -113,8 +110,7 @@ class EducationElement extends React.Component {
               inputType="date"
               informationType="endDate"
               onGoing={this.state.onGoing}
-              itemIndex={itemIndex}
-              sendChanges={updateItem}
+              sendChanges={handleChange}
             />
             <OnGoingCheckbox
               onGoing={this.state.onGoing}

@@ -33,125 +33,6 @@ class EducationSection extends React.Component {
         }),
       });
     };
-    const resolveEndDate = (endDateValue, onGoing) => {
-      if (onGoing) {
-        return "Present";
-      } else {
-        return endDateValue;
-      }
-    };
-    const testUpdateItem = (newValue, valueType, itemIndex, onGoing) => {
-      const test = new Date();
-      console.log(test, test.getMilliseconds());
-      const testArray = this.state.items.map((item) => {
-        console.log(item, test, test.getMilliseconds());
-        console.log(item);
-        if (item.itemID === itemIndex) {
-          let updatedItem;
-          if (valueType === "schoolName") {
-            item = {
-              ...item,
-              schoolName: newValue,
-            };
-          } else if (valueType === "degree") {
-            item = {
-              ...item,
-              degree: newValue,
-            };
-          } else if (valueType === "startDate") {
-            item = {
-              ...item,
-              studyDates: { ...item.studyDates, start: newValue },
-            };
-          } else if (valueType === "endDate") {
-            console.log({ ...this.state.items });
-            const endDate = resolveEndDate(newValue, onGoing);
-            item = {
-              ...item,
-              studyDates: { ...item.studyDates, end: endDate },
-            };
-          }
-          console.log(item);
-          return item;
-        } else {
-          return item;
-        }
-      });
-      console.log(testArray);
-      // setTimeout(() => {
-      //   this.setState({
-      //     items: this.state.items.map((item) => {
-      //       if (item.itemID === itemIndex) {
-      //         let updatedItem;
-      //         if (valueType === "schoolName") {
-      //           updatedItem = {
-      //             ...item,
-      //             schoolName: newValue,
-      //           };
-      //         } else if (valueType === "degree") {
-      //           updatedItem = {
-      //             ...item,
-      //             degree: newValue,
-      //           };
-      //         } else if (valueType === "startDate") {
-      //           updatedItem = {
-      //             ...item,
-      //             studyDates: { ...item.studyDates, start: newValue },
-      //           };
-      //         } else if (valueType === "endDate") {
-      //           console.log({ ...this.state.items });
-      //           const endDate = resolveEndDate(newValue, onGoing);
-      //           updatedItem = {
-      //             ...item,
-      //             studyDates: { ...item.studyDates, end: endDate },
-      //           };
-      //         }
-      //         console.log(updatedItem);
-      //         return updatedItem;
-      //       } else {
-      //         return item;
-      //       }
-      //     }),
-      //   });
-      // }, 0);
-      this.setState({
-        items: this.state.items.map((item) => {
-          console.log(item);
-          let updatedItem;
-          if (item.itemID === itemIndex) {
-            if (valueType === "schoolName") {
-              updatedItem = {
-                ...item,
-                schoolName: newValue,
-              };
-            } else if (valueType === "degree") {
-              updatedItem = {
-                ...item,
-                degree: newValue,
-              };
-            } else if (valueType === "startDate") {
-              updatedItem = {
-                ...item,
-                studyDates: { ...item.studyDates, start: newValue },
-              };
-            } else if (valueType === "endDate") {
-              console.log({ ...this.state.items });
-              const endDate = resolveEndDate(newValue, onGoing);
-              updatedItem = {
-                ...item,
-                studyDates: { ...item.studyDates, end: endDate },
-              };
-            }
-            // console.log(updatedItem);
-            // return updatedItem;
-          } else {
-            // return item;
-            updatedItem = item;
-          }
-          return updatedItem;
-        }),
-      });
-    };
     const addItem = () => {
       this.setState({
         items: this.state.items.concat({
@@ -182,7 +63,7 @@ class EducationSection extends React.Component {
             degree={item.degree}
             startDate={item.studyDates.start}
             endDate={item.studyDates.end}
-            updateItem={testUpdateItem}
+            updateItem={updateItem}
             addItem={addItem}
             deleteItem={deleteItem}
           />

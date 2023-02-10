@@ -87,7 +87,6 @@ class EducationElement extends React.Component {
     };
     const cancelEdit = () => {
       this.setState({ editing: false });
-      updateItem(schoolName, degree, startDate, endDate, itemIndex);
       resetState();
     };
     return (

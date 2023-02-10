@@ -94,7 +94,6 @@ class WorkHistoryElement extends React.Component {
     };
     const cancelEdit = () => {
       this.setState({ editing: false });
-      updateItem(companyName, title, startDate, endDate, itemIndex);
       resetState();
     };
     return (

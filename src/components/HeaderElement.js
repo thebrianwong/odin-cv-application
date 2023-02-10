@@ -1,4 +1,5 @@
 import React from "react";
+import CancelEditButton from "./CancelEditButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 
@@ -27,11 +28,18 @@ class HeaderElement extends React.Component {
       this.setState({ editing: false });
       updateHeader(this.state.value, headerType);
     };
+    const resetState = () => {
+      this.setState({ value: this.props.value });
+    };
+    const cancelEdit = () => {
+      this.setState({ editing: false });
+      resetState();
+    };
     return (
       <div>
         {!this.state.editing ? (
           <p>
-            {this.state.value.length === 0 ? placeholder : this.state.value}
+            {this.props.value.length === 0 ? placeholder : this.props.value}
           </p>
         ) : (
           <Input
@@ -48,6 +56,7 @@ class HeaderElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
+        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
       </div>
     );
   }

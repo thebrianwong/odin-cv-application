@@ -18,6 +18,7 @@ class EducationSection extends React.Component {
       newEndDate,
       itemIndex
     ) => {
+      console.log(newSchool, newDegree, newStartDate, newEndDate, itemIndex);
       this.setState({
         items: this.state.items.map((item) => {
           if (item.itemID === itemIndex) {
@@ -32,6 +33,7 @@ class EducationSection extends React.Component {
           }
         }),
       });
+      console.log(this.state);
     };
     const addItem = () => {
       this.setState({

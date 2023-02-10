@@ -1,4 +1,5 @@
 import React from "react";
+import CancelEditButton from "./CancelEditButton";
 import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
@@ -69,6 +70,26 @@ class EducationElement extends React.Component {
         itemIndex
       );
     };
+    const resetState = () => {
+      let isOnGoing;
+      if (this.props.endDate === "Present") {
+        isOnGoing = true;
+      } else {
+        isOnGoing = false;
+      }
+      this.setState({
+        schoolNameInput: this.props.schoolName,
+        degreeInput: this.props.degree,
+        startDateInput: this.props.startDate,
+        endDateInput: this.props.endDate,
+        onGoing: isOnGoing,
+      });
+    };
+    const cancelEdit = () => {
+      this.setState({ editing: false });
+      updateItem(schoolName, degree, startDate, endDate, itemIndex);
+      resetState();
+    };
     return (
       <div>
         {!this.state.editing ? (
@@ -121,6 +142,7 @@ class EducationElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
+        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
         {!this.state.editing && (
           <DeleteItemButton
             itemIndex={itemIndex}

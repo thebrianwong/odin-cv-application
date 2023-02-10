@@ -20,10 +20,10 @@ class HeaderElement extends React.Component {
     const handleChange = (newValue) => {
       this.setState({ value: newValue });
     };
-    const startEdit = (e) => {
+    const startEdit = () => {
       this.setState({ editing: true });
     };
-    const submitEdit = (e) => {
+    const submitEdit = () => {
       this.setState({ editing: false });
     };
     return (

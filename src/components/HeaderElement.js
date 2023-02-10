@@ -5,10 +5,10 @@ import Input from "./Input";
 class HeaderElement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", editing: false };
+    this.state = { value: props.value, editing: false };
   }
   render() {
-    const { headerType, inputType } = this.props;
+    const { headerType, inputType, updateHeader } = this.props;
     let placeholder;
     if (headerType === "name") {
       placeholder = "Name";
@@ -18,13 +18,14 @@ class HeaderElement extends React.Component {
       placeholder = "Phone Number";
     }
     const handleChange = (newValue) => {
-      this.setState({ value: newValue });
+      this.setState({ ...this.state, value: newValue });
     };
     const startEdit = () => {
       this.setState({ editing: true });
     };
     const submitEdit = () => {
       this.setState({ editing: false });
+      updateHeader(this.state.value, headerType);
     };
     return (
       <div>
@@ -37,6 +38,7 @@ class HeaderElement extends React.Component {
             focus={true}
             previousValue={this.state.value}
             inputType={inputType}
+            informationType={headerType}
             sendChanges={handleChange}
             submitEdit={submitEdit}
           />

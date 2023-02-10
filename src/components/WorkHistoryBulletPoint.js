@@ -1,4 +1,5 @@
 import React from "react";
+import CancelEditButton from "./CancelEditButton";
 import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
@@ -21,6 +22,13 @@ class WorkHistoryBulletPoint extends React.Component {
       this.setState({ editing: false });
       updateTask(this.state.value, itemIndex, taskIndex);
     };
+    const resetState = () => {
+      this.setState({ value: this.props.description });
+    };
+    const cancelEdit = () => {
+      this.setState({ editing: false });
+      resetState();
+    };
     return (
       <li>
         <div>
@@ -39,6 +47,7 @@ class WorkHistoryBulletPoint extends React.Component {
             startEdit={startEdit}
             submitEdit={submitEdit}
           />
+          {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
           {!this.state.editing && (
             <DeleteItemButton
               itemIndex={itemIndex}

@@ -27,7 +27,6 @@ class EducationElement extends React.Component {
       itemIndex,
     } = this.props;
     const handleChange = (value, informationType) => {
-      // console.log(value, informationType);
       switch (informationType) {
         case "schoolName":
           this.setState({ schoolNameInput: value });
@@ -47,31 +46,6 @@ class EducationElement extends React.Component {
         default:
           break;
       }
-      const endDate = resolveEndDate();
-      console.log("ELEMENT HANDLE CHANGE");
-      console.log(
-        this.state.schoolNameInput,
-        this.state.degreeInput,
-        this.state.startDateInput,
-        endDate,
-        itemIndex
-      );
-      setTimeout(() => {
-        updateItem(
-          this.state.schoolNameInput,
-          this.state.degreeInput,
-          this.state.startDateInput,
-          endDate,
-          itemIndex
-        );
-      }, 0);
-      updateItem(
-        this.state.schoolNameInput,
-        this.state.degreeInput,
-        this.state.startDateInput,
-        endDate,
-        itemIndex
-      );
     };
     const resolveEndDate = () => {
       if (this.state.onGoing) {
@@ -85,25 +59,15 @@ class EducationElement extends React.Component {
       this.setState({ editing: true });
     };
     const submitEdit = () => {
-      console.log("SUBMIT EDIT 1");
-      this.setState({ editing: false }, () => console.log("tesst"));
-      console.log("SUBMIT EDIT 2");
+      this.setState({ editing: false });
       const endDate = resolveEndDate();
-      console.log(
+      updateItem(
         this.state.schoolNameInput,
         this.state.degreeInput,
         this.state.startDateInput,
         endDate,
         itemIndex
       );
-      // console.log(endDate, this.state.endDateInput);
-      // updateItem(
-      //   this.state.schoolNameInput,
-      //   this.state.degreeInput,
-      //   this.state.startDateInput,
-      //   endDate,
-      //   itemIndex
-      // );
     };
     return (
       <div>

@@ -48,7 +48,6 @@ class HeaderElement extends React.Component {
             inputType={inputType}
             informationType={headerType}
             sendChanges={handleChange}
-            submitEdit={submitEdit}
           />
         )}
         <EditSubmitButtons

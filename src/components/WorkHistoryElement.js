@@ -1,5 +1,6 @@
 import React from "react";
 import AddItemButton from "./AddItemButton";
+import CancelEditButton from "./CancelEditButton";
 import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
@@ -76,6 +77,26 @@ class WorkHistoryElement extends React.Component {
         itemIndex
       );
     };
+    const resetState = () => {
+      let isOnGoing;
+      if (this.props.endDate === "Present") {
+        isOnGoing = true;
+      } else {
+        isOnGoing = false;
+      }
+      this.setState({
+        companyNameInput: this.props.companyName,
+        titleInput: this.props.title,
+        startDateInput: this.props.startDate,
+        endDateInput: this.props.endDate,
+        onGoing: isOnGoing,
+      });
+    };
+    const cancelEdit = () => {
+      this.setState({ editing: false });
+      updateItem(companyName, title, startDate, endDate, itemIndex);
+      resetState();
+    };
     return (
       <div>
         {!this.state.editing ? (
@@ -128,6 +149,7 @@ class WorkHistoryElement extends React.Component {
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
+        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
         {!this.state.editing && (
           <DeleteItemButton
             itemIndex={itemIndex}

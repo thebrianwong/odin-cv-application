@@ -6,7 +6,10 @@ class Input extends React.Component {
     if (props.focus) {
       this.input = React.createRef();
     }
-    this.state = { inputValue: props.previousValue };
+    this.state = {
+      inputValue: props.previousValue,
+      previousValue: props.previousValue,
+    };
   }
   componentDidMount() {
     if (this.props.focus) {

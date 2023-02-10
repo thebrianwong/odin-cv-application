@@ -6,9 +6,23 @@ class EditSubmitButtons extends React.Component {
     return (
       <>
         {!editing ? (
-          <button onClick={startEdit}>Edit</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              startEdit();
+            }}
+          >
+            Edit
+          </button>
         ) : (
-          <button onClick={submitEdit}>Update</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              submitEdit();
+            }}
+          >
+            Update
+          </button>
         )}
       </>
     );

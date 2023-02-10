@@ -21,11 +21,9 @@ class HeaderElement extends React.Component {
       this.setState({ value: newValue });
     };
     const startEdit = (e) => {
-      e.preventDefault();
       this.setState({ editing: true });
     };
     const submitEdit = (e) => {
-      e.preventDefault();
       this.setState({ editing: false });
     };
     return (
@@ -40,6 +38,7 @@ class HeaderElement extends React.Component {
             previousValue={this.state.value}
             inputType={inputType}
             sendChanges={handleChange}
+            submitEdit={submitEdit}
           />
         )}
         <EditSubmitButtons

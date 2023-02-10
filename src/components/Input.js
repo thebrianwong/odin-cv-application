@@ -17,8 +17,16 @@ class Input extends React.Component {
     }
   }
   render() {
-    const { focus, label, inputType, informationType, onGoing, sendChanges } =
-      this.props;
+    const {
+      focus,
+      label,
+      inputType,
+      informationType,
+      onGoing,
+      sendChanges,
+      submitEdit,
+      cancelEdit,
+    } = this.props;
     const handleChanges = (e) => {
       this.setState({ inputValue: e.target.value }, () =>
         sendChanges(this.state.inputValue, informationType)
@@ -33,6 +41,13 @@ class Input extends React.Component {
           type={inputType}
           value={this.state.inputValue}
           onChange={(e) => handleChanges(e)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              submitEdit();
+            } else if (e.key === "Escape") {
+              cancelEdit();
+            }
+          }}
         />
       </label>
     );

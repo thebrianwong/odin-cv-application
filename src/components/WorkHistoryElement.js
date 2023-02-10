@@ -114,6 +114,8 @@ class WorkHistoryElement extends React.Component {
               inputType="text"
               informationType="companyName"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="Title"
@@ -121,6 +123,8 @@ class WorkHistoryElement extends React.Component {
               inputType="text"
               informationType="title"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="Start Date"
@@ -128,6 +132,8 @@ class WorkHistoryElement extends React.Component {
               inputType="date"
               informationType="startDate"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="End Date"
@@ -136,6 +142,8 @@ class WorkHistoryElement extends React.Component {
               informationType="endDate"
               onGoing={this.state.onGoing}
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <OnGoingCheckbox
               onGoing={this.state.onGoing}

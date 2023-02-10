@@ -107,6 +107,8 @@ class EducationElement extends React.Component {
               inputType="text"
               informationType="schoolName"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="Degree"
@@ -114,6 +116,8 @@ class EducationElement extends React.Component {
               inputType="text"
               informationType="degree"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="Start Date"
@@ -121,6 +125,8 @@ class EducationElement extends React.Component {
               inputType="date"
               informationType="startDate"
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <Input
               label="End Date"
@@ -129,6 +135,8 @@ class EducationElement extends React.Component {
               informationType="endDate"
               onGoing={this.state.onGoing}
               sendChanges={handleChange}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
             <OnGoingCheckbox
               onGoing={this.state.onGoing}

@@ -40,6 +40,8 @@ class WorkHistoryBulletPoint extends React.Component {
               previousValue={this.state.value}
               inputType="text"
               sendChanges={handleChanges}
+              submitEdit={submitEdit}
+              cancelEdit={cancelEdit}
             />
           )}
           <EditSubmitButtons

@@ -67,16 +67,14 @@ class WorkHistoryElement extends React.Component {
     };
     const submitEdit = () => {
       this.setState({ editing: false });
-      setTimeout(() => {
-        const endDate = resolveEndDate();
-        updateItem(
-          this.state.companyNameInput,
-          this.state.titleInput,
-          this.state.startDateInput,
-          endDate,
-          itemIndex
-        );
-      }, 0);
+      const endDate = resolveEndDate();
+      updateItem(
+        this.state.companyNameInput,
+        this.state.titleInput,
+        this.state.startDateInput,
+        endDate,
+        itemIndex
+      );
     };
     return (
       <div>

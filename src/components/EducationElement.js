@@ -90,16 +90,16 @@ class EducationElement extends React.Component {
       resetState();
     };
     return (
-      <div>
+      <div className="education-item">
         {!this.state.editing ? (
-          <div>
+          <div className="contents education-contents">
             <p className="school-name">{schoolName}</p>
             <p className="degree">{degree}</p>
             <p className="start-date">{startDate}</p>
             <p className="end-date">{endDate}</p>
           </div>
         ) : (
-          <form>
+          <form className="form-input education-form">
             <Input
               focus={true}
               label="School Name"
@@ -144,18 +144,31 @@ class EducationElement extends React.Component {
             />
           </form>
         )}
-        <EditSubmitButtons
-          editing={this.state.editing}
-          startEdit={startEdit}
-          submitEdit={submitEdit}
-        />
-        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
-        {!this.state.editing && (
-          <DeleteItemButton
-            itemIndex={itemIndex}
-            deleteFromCollection={deleteItem}
+        <div className="button-group">
+          <EditSubmitButtons
+            generalClassName="education-button"
+            editClassName="education-edit-button"
+            submitClassName="education-submit-button"
+            editing={this.state.editing}
+            startEdit={startEdit}
+            submitEdit={submitEdit}
           />
-        )}
+          {this.state.editing && (
+            <CancelEditButton
+              generalClassName="education-button"
+              specificClassName="education-cancel-edit-button"
+              cancelEdit={cancelEdit}
+            />
+          )}
+          {!this.state.editing && (
+            <DeleteItemButton
+              generalClassName="education-button"
+              specificClassName="education-delete-button"
+              itemIndex={itemIndex}
+              deleteFromCollection={deleteItem}
+            />
+          )}
+        </div>
       </div>
     );
   }

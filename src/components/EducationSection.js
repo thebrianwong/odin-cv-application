@@ -51,9 +51,15 @@ class EducationSection extends React.Component {
       });
     };
     return (
-      <div className="education">
-        <h2>Education</h2>
-        <AddItemButton addItem={addItem} />
+      <div className="education-section">
+        <div className="education-header">
+          <h2>Education</h2>
+          <AddItemButton
+            generalClassName="add-item-button"
+            specificClassName="add-education-item-button"
+            addItem={addItem}
+          />
+        </div>
         {this.state.items.length === 0 && <p>Add your education here!</p>}
         {this.state.items.map((item) => (
           <EducationElement

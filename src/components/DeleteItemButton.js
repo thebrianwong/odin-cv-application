@@ -2,9 +2,18 @@ import React from "react";
 
 class DeleteItemButton extends React.Component {
   render() {
-    const { itemIndex, taskIndex, deleteFromCollection } = this.props;
+    const {
+      generalClassName,
+      specificClassName,
+      itemIndex,
+      taskIndex,
+      deleteFromCollection,
+    } = this.props;
     return (
-      <button onClick={() => deleteFromCollection(itemIndex, taskIndex)}>
+      <button
+        className={`${generalClassName} ${specificClassName}`}
+        onClick={() => deleteFromCollection(itemIndex, taskIndex)}
+      >
         <span class="material-symbols-outlined">close</span>
       </button>
     );

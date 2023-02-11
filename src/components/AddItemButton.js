@@ -2,9 +2,12 @@ import React from "react";
 
 class AddItemButton extends React.Component {
   render() {
-    const { addItem } = this.props;
+    const { generalClassName, specificClassName, addItem } = this.props;
     return (
-      <button onClick={addItem}>
+      <button
+        className={`${generalClassName} ${specificClassName}`}
+        onClick={addItem}
+      >
         <span class="material-symbols-outlined">add</span>
       </button>
     );

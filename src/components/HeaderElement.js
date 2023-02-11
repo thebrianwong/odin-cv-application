@@ -44,6 +44,7 @@ class HeaderElement extends React.Component {
         ) : (
           <Input
             focus={true}
+            label={placeholder}
             previousValue={this.state.value}
             inputType={inputType}
             informationType={headerType}

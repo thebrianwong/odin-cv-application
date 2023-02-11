@@ -21,7 +21,7 @@ class HeaderSection extends React.Component {
       }
     };
     return (
-      <form className="header">
+      <form className="header-section">
         <HeaderElement
           value={this.state.name}
           headerType="name"

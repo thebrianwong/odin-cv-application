@@ -36,7 +36,7 @@ input {
   gap: 15px;
 }
 
-.header-section .header-item:nth-child(1) {
+.header-section .header-item:first-child {
   margin-top: 15px;
 }
 

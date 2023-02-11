@@ -36,15 +36,16 @@ class HeaderElement extends React.Component {
       resetState();
     };
     return (
-      <div>
+      <div className="header-item">
         {!this.state.editing ? (
-          <p>
+          <p className="header-text">
             {this.props.value.length === 0 ? placeholder : this.props.value}
           </p>
         ) : (
           <Input
             focus={true}
             label={placeholder}
+            className="header-input"
             previousValue={this.state.value}
             inputType={inputType}
             informationType={headerType}
@@ -54,11 +55,20 @@ class HeaderElement extends React.Component {
           />
         )}
         <EditSubmitButtons
+          generalClassName="header-button"
+          editClassName="header-edit-button"
+          submitClassName="header-submit-button"
           editing={this.state.editing}
           startEdit={startEdit}
           submitEdit={submitEdit}
         />
-        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
+        {this.state.editing && (
+          <CancelEditButton
+            generalClassName="header-button"
+            specificClassName="header-cancel-edit-button"
+            cancelEdit={cancelEdit}
+          />
+        )}
       </div>
     );
   }

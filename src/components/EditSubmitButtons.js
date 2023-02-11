@@ -2,11 +2,19 @@ import React from "react";
 
 class EditSubmitButtons extends React.Component {
   render() {
-    const { editing, startEdit, submitEdit } = this.props;
+    const {
+      generalClassName,
+      editClassName,
+      submitClassName,
+      editing,
+      startEdit,
+      submitEdit,
+    } = this.props;
     return (
       <>
         {!editing ? (
           <button
+            className={`${generalClassName} ${editClassName}`}
             onClick={(e) => {
               e.preventDefault();
               startEdit();
@@ -16,6 +24,7 @@ class EditSubmitButtons extends React.Component {
           </button>
         ) : (
           <button
+            className={`${generalClassName} ${submitClassName}`}
             onClick={(e) => {
               e.preventDefault();
               submitEdit();

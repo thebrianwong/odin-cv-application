@@ -2,9 +2,10 @@ import React from "react";
 
 class CancelEditButton extends React.Component {
   render() {
-    const { cancelEdit } = this.props;
+    const { generalClassName, specificClassName, cancelEdit } = this.props;
     return (
       <button
+        className={`${generalClassName} ${specificClassName}`}
         onClick={(e) => {
           e.preventDefault();
           cancelEdit();

@@ -53,3 +53,52 @@ input {
 .header-button {
   margin-left: 10px;
 }
+
+.education-header {
+  display: flex;
+  align-items: center;
+}
+
+h2 {
+  margin-left: 15px;
+}
+
+h2+button {
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.education-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-item > *:first-child {
+  margin-left: 25px;
+}
+
+.form-input label {
+  display: flex;
+  align-items: center;
+}
+
+/* edu and work */
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contents {
+  display: flex;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+
+.button-group button:first-child {
+  margin-right: 15px;
+}

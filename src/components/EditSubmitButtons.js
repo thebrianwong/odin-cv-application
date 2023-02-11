@@ -20,7 +20,7 @@ class EditSubmitButtons extends React.Component {
               startEdit();
             }}
           >
-            <span class="material-symbols-outlined">edit</span>
+            <span className="material-symbols-outlined">edit</span>
           </button>
         ) : (
           <button
@@ -30,7 +30,7 @@ class EditSubmitButtons extends React.Component {
               submitEdit();
             }}
           >
-            <span class="material-symbols-outlined">done</span>
+            <span className="material-symbols-outlined">done</span>
           </button>
         )}
       </>

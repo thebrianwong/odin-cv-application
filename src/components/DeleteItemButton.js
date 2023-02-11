@@ -14,7 +14,7 @@ class DeleteItemButton extends React.Component {
         className={`${generalClassName} ${specificClassName}`}
         onClick={() => deleteFromCollection(itemIndex, taskIndex)}
       >
-        <span class="material-symbols-outlined">close</span>
+        <span className="material-symbols-outlined">close</span>
       </button>
     );
   }

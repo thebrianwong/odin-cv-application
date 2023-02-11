@@ -11,7 +11,7 @@ class CancelEditButton extends React.Component {
           cancelEdit();
         }}
       >
-        <span class="material-symbols-outlined">undo</span>
+        <span className="material-symbols-outlined">undo</span>
       </button>
     );
   }

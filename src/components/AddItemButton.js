@@ -8,7 +8,7 @@ class AddItemButton extends React.Component {
         className={`${generalClassName} ${specificClassName}`}
         onClick={addItem}
       >
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
       </button>
     );
   }

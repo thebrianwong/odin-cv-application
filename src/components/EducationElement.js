@@ -89,14 +89,34 @@ class EducationElement extends React.Component {
       this.setState({ editing: false });
       resetState();
     };
+    const formatDate = (rawDate) => {
+      console.log(rawDate);
+      if (rawDate === "Present") {
+        return rawDate;
+      } else if (rawDate === "") {
+        return "";
+      } else {
+        const formatting = {
+          timeZone: "UTC",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const formattedDate = new Date(rawDate).toLocaleDateString(
+          undefined,
+          formatting
+        );
+        return formattedDate;
+      }
+    };
     return (
       <div className="education-item">
         {!this.state.editing ? (
           <div className="contents education-contents">
             <p className="school-name">{schoolName}</p>
             <p className="degree">{degree}</p>
-            <p className="start-date">{startDate}</p>
-            <p className="end-date">{endDate}</p>
+            <p className="start-date">{formatDate(startDate)}</p>
+            <p className="end-date">{formatDate(endDate)}</p>
           </div>
         ) : (
           <form className="form-input education-form">

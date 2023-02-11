@@ -96,14 +96,34 @@ class WorkHistoryElement extends React.Component {
       this.setState({ editing: false });
       resetState();
     };
+    const formatDate = (rawDate) => {
+      console.log(rawDate);
+      if (rawDate === "Present") {
+        return rawDate;
+      } else if (rawDate === "") {
+        return "";
+      } else {
+        const formatting = {
+          timeZone: "UTC",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const formattedDate = new Date(rawDate).toLocaleDateString(
+          undefined,
+          formatting
+        );
+        return formattedDate;
+      }
+    };
     return (
       <div>
         {!this.state.editing ? (
           <div>
             <p className="company-name">{companyName}</p>
             <p className="title">{title}</p>
-            <p className="start-date">{startDate}</p>
-            <p className="end-date">{endDate}</p>
+            <p className="start-date">{formatDate(startDate)}</p>
+            <p className="end-date">{formatDate(endDate)}</p>
           </div>
         ) : (
           <form>

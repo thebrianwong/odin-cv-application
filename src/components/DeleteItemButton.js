@@ -5,7 +5,7 @@ class DeleteItemButton extends React.Component {
     const { itemIndex, taskIndex, deleteFromCollection } = this.props;
     return (
       <button onClick={() => deleteFromCollection(itemIndex, taskIndex)}>
-        Delete
+        <span class="material-symbols-outlined">close</span>
       </button>
     );
   }

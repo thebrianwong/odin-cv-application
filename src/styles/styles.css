@@ -1,3 +1,55 @@
 * {
   border: solid 1px red;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  margin: 5vh auto 0;
+  max-width: 750px;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  margin-left: 5px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.header .header-item:nth-child(1) {
+  margin-top: 15px;
+}
+
+.header .header-item:last-child {
+  margin-bottom: 15px;
+}
+
+.header-item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.header-button {
+  margin-left: 10px;
+}

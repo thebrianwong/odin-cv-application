@@ -164,10 +164,7 @@ class WorkHistoryElement extends React.Component {
           />
         )}
         <h3>Responsibilities</h3>
-        <AddItemButton
-          buttonLabel="Add new task"
-          addItem={() => addTask(itemIndex)}
-        />
+        <AddItemButton addItem={() => addTask(itemIndex)} />
         <ul>
           {tasks.map((task, index) => (
             <WorkHistoryBulletPoint

@@ -5,7 +5,7 @@ class AddItemButton extends React.Component {
     super(props);
   }
   render() {
-    const { buttonLabel, addItem } = this.props;
+    const { addItem } = this.props;
     return (
       <button onClick={addItem}>
         <span class="material-symbols-outlined">add</span>

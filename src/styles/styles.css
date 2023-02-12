@@ -105,29 +105,38 @@ ul {
   margin-right: 15px;
 }
 
-.education-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.education-item > *:first-child {
-  margin-left: 25px;
-}
-
-.form-input label {
-  display: flex;
-  align-items: center;
-}
-
-/* edu and work */
-.form-input {
+/* education and work section */
+.form-input ul {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-left: 25px;
+  padding: 0;
+  list-style: none;
 }
 
 .contents {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: start;
+  margin: 0 15px 0 25px
+}
+
+.contents > p:first-child {
+  font-size: large;
+  font-weight: 600;
+}
+
+.contents > p:last-child {
+  font-size: small;
+  font-style: italic;
+}
+
+.education-dates,
+.work-history-dates {
+  justify-self: end;
 }
 
 .button-group {

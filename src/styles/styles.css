@@ -2,6 +2,8 @@
   border: solid 1px red;
 }
 
+/* general */
+
 :root {
   font-family: 'Noto Sans', sans-serif;
 }
@@ -14,6 +16,14 @@
   border-radius: 8px;
   margin: 5vh auto;
   max-width: 750px;
+}
+
+h2 {
+  margin-left: 15px;
+}
+
+h4 {
+  margin-left: 25px;
 }
 
 p {

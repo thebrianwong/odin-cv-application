@@ -106,7 +106,7 @@ class WorkHistorySection extends React.Component {
     };
     return (
       <div className="work-history-section">
-        <div class="work-history-header">
+        <div className="work-history-header">
           <h2>Work History</h2>
           <AddItemButton
             generalClassName="add-item-button"

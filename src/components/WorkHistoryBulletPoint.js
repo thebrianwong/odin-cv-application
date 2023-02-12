@@ -44,7 +44,7 @@ class WorkHistoryBulletPoint extends React.Component {
               cancelEdit={cancelEdit}
             />
           )}
-          <div class="button-group">
+          <div className="button-group">
             <EditSubmitButtons
               generalClassName="work-history-task-button"
               editClassName="work-history-task-edit-button"

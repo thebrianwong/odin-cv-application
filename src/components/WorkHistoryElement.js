@@ -184,7 +184,7 @@ class WorkHistoryElement extends React.Component {
             </ul>
           </form>
         )}
-        <div class="button-group">
+        <div className="button-group">
           <EditSubmitButtons
             generalClassName="work-history-button"
             editClassName="work-history-edit-button"
@@ -209,8 +209,8 @@ class WorkHistoryElement extends React.Component {
             />
           )}
         </div>
-        <div class="work-history-task-subsection">
-          <div class="work-history-task-header">
+        <div className="work-history-task-subsection">
+          <div className="work-history-task-header">
             <h4>Responsibilities</h4>
             <AddItemButton
               generalClassName="add-item-button"

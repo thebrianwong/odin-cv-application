@@ -30,7 +30,7 @@ class WorkHistoryBulletPoint extends React.Component {
       resetState();
     };
     return (
-      <li>
+      <li className="task-bullet-point">
         <div>
           {!this.state.editing ? (
             <p className="task-bullet-point">{description}</p>
@@ -44,19 +44,32 @@ class WorkHistoryBulletPoint extends React.Component {
               cancelEdit={cancelEdit}
             />
           )}
-          <EditSubmitButtons
-            editing={this.state.editing}
-            startEdit={startEdit}
-            submitEdit={submitEdit}
-          />
-          {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
-          {!this.state.editing && (
-            <DeleteItemButton
-              itemIndex={itemIndex}
-              taskIndex={taskIndex}
-              deleteFromCollection={deleteTask}
+          <div class="button-group">
+            <EditSubmitButtons
+              generalClassName="work-history-task-button"
+              editClassName="work-history-task-edit-button"
+              submitClassName="work-history-task-submit-button"
+              editing={this.state.editing}
+              startEdit={startEdit}
+              submitEdit={submitEdit}
             />
-          )}
+            {this.state.editing && (
+              <CancelEditButton
+                generalClassName="work-history-task-button"
+                specificClassName="work-history-task-cancel-edit-button"
+                cancelEdit={cancelEdit}
+              />
+            )}
+            {!this.state.editing && (
+              <DeleteItemButton
+                generalClassName="work-history-task-button"
+                specificClassName="work-history-task-delete-button"
+                itemIndex={itemIndex}
+                taskIndex={taskIndex}
+                deleteFromCollection={deleteTask}
+              />
+            )}
+          </div>
         </div>
       </li>
     );

@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <HeaderSection />
-      <EducationSection />
       <WorkHistorySection />
+      <EducationSection />
     </>
   );
 }

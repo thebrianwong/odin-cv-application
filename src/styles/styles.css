@@ -5,8 +5,10 @@
 #root {
   display: flex;
   flex-direction: column;
-  border: solid 1px black;
-  margin: 5vh auto 0;
+  background-color: whitesmoke;
+  border: solid 4px black;
+  border-radius: 8px;
+  margin: 5vh auto;
   max-width: 750px;
 }
 

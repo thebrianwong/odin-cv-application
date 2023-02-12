@@ -117,9 +117,9 @@ class WorkHistoryElement extends React.Component {
       }
     };
     return (
-      <div>
+      <div className="work-history-item">
         {!this.state.editing ? (
-          <div>
+          <div className="contents work-history-contents">
             <p className="company-name">{companyName}</p>
             <p className="work-history-dates">{`${formatDate(
               startDate
@@ -184,32 +184,53 @@ class WorkHistoryElement extends React.Component {
             </ul>
           </form>
         )}
-        <EditSubmitButtons
-          editing={this.state.editing}
-          startEdit={startEdit}
-          submitEdit={submitEdit}
-        />
-        {this.state.editing && <CancelEditButton cancelEdit={cancelEdit} />}
-        {!this.state.editing && (
-          <DeleteItemButton
-            itemIndex={itemIndex}
-            deleteFromCollection={deleteItem}
+        <div class="button-group">
+          <EditSubmitButtons
+            generalClassName="work-history-button"
+            editClassName="work-history-edit-button"
+            submitClassName="work-history-submit-button"
+            editing={this.state.editing}
+            startEdit={startEdit}
+            submitEdit={submitEdit}
           />
-        )}
-        <h3>Responsibilities</h3>
-        <AddItemButton addItem={() => addTask(itemIndex)} />
-        <ul>
-          {tasks.map((task, index) => (
-            <WorkHistoryBulletPoint
-              itemIndex={itemIndex}
-              taskIndex={task.taskID}
-              key={task.taskID}
-              description={task.description}
-              updateTask={updateTask}
-              deleteTask={deleteTask}
+          {this.state.editing && (
+            <CancelEditButton
+              generalClassName="work-history-button"
+              specificClassName="work-history-cancel-edit-button"
+              cancelEdit={cancelEdit}
             />
-          ))}
-        </ul>
+          )}
+          {!this.state.editing && (
+            <DeleteItemButton
+              generalClassName="work-history-button"
+              specificClassName="work-history-delete-button"
+              itemIndex={itemIndex}
+              deleteFromCollection={deleteItem}
+            />
+          )}
+        </div>
+        <div class="work-history-task-subsection">
+          <div class="work-history-task-header">
+            <h4>Responsibilities</h4>
+            <AddItemButton
+              generalClassName="add-item-button"
+              specificClassName="add-work-history-item-button"
+              addItem={() => addTask(itemIndex)}
+            />
+          </div>
+          <ul className="work-history-task">
+            {tasks.map((task, index) => (
+              <WorkHistoryBulletPoint
+                itemIndex={itemIndex}
+                taskIndex={task.taskID}
+                key={task.taskID}
+                description={task.description}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }

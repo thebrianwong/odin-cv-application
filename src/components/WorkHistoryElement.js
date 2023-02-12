@@ -121,9 +121,10 @@ class WorkHistoryElement extends React.Component {
         {!this.state.editing ? (
           <div>
             <p className="company-name">{companyName}</p>
+            <p className="work-history-dates">{`${formatDate(
+              startDate
+            )} - ${formatDate(endDate)}`}</p>
             <p className="title">{title}</p>
-            <p className="start-date">{formatDate(startDate)}</p>
-            <p className="end-date">{formatDate(endDate)}</p>
           </div>
         ) : (
           <form>

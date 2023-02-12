@@ -114,9 +114,10 @@ class EducationElement extends React.Component {
         {!this.state.editing ? (
           <div className="contents education-contents">
             <p className="school-name">{schoolName}</p>
+            <p className="education-dates">{`${formatDate(
+              startDate
+            )} - ${formatDate(endDate)}`}</p>
             <p className="degree">{degree}</p>
-            <p className="start-date">{formatDate(startDate)}</p>
-            <p className="end-date">{formatDate(endDate)}</p>
           </div>
         ) : (
           <form className="form-input education-form">

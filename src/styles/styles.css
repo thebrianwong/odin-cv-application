@@ -50,6 +50,16 @@ input {
   margin-right: 15px;
 }
 
+.header-name {
+  font-size: large;
+  font-weight: 600;
+}
+
+.header-email,
+.header-phone {
+  font-size:small ;
+}
+
 .header-button {
   margin-left: 10px;
 }

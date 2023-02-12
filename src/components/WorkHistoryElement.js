@@ -127,48 +127,60 @@ class WorkHistoryElement extends React.Component {
           </div>
         ) : (
           <form>
-            <Input
-              focus={true}
-              label="Company Name"
-              previousValue={this.state.companyNameInput}
-              inputType="text"
-              informationType="companyName"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="Title"
-              previousValue={this.state.titleInput}
-              inputType="text"
-              informationType="title"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="Start Date"
-              previousValue={this.state.startDateInput}
-              inputType="date"
-              informationType="startDate"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="End Date"
-              previousValue={this.state.endDateInput}
-              inputType="date"
-              informationType="endDate"
-              onGoing={this.state.onGoing}
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <OnGoingCheckbox
-              onGoing={this.state.onGoing}
-              sendChanges={handleChange}
-            />
+            <ul>
+              <li>
+                <Input
+                  focus={true}
+                  label="Company Name"
+                  previousValue={this.state.companyNameInput}
+                  inputType="text"
+                  informationType="companyName"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="Title"
+                  previousValue={this.state.titleInput}
+                  inputType="text"
+                  informationType="title"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="Start Date"
+                  previousValue={this.state.startDateInput}
+                  inputType="date"
+                  informationType="startDate"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="End Date"
+                  previousValue={this.state.endDateInput}
+                  inputType="date"
+                  informationType="endDate"
+                  onGoing={this.state.onGoing}
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <OnGoingCheckbox
+                  onGoing={this.state.onGoing}
+                  sendChanges={handleChange}
+                />
+              </li>
+            </ul>
           </form>
         )}
         <EditSubmitButtons

@@ -120,48 +120,60 @@ class EducationElement extends React.Component {
           </div>
         ) : (
           <form className="form-input education-form">
-            <Input
-              focus={true}
-              label="School Name"
-              previousValue={this.state.schoolNameInput}
-              inputType="text"
-              informationType="schoolName"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="Degree"
-              previousValue={this.state.degreeInput}
-              inputType="text"
-              informationType="degree"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="Start Date"
-              previousValue={this.state.startDateInput}
-              inputType="date"
-              informationType="startDate"
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <Input
-              label="End Date"
-              previousValue={this.state.endDateInput}
-              inputType="date"
-              informationType="endDate"
-              onGoing={this.state.onGoing}
-              sendChanges={handleChange}
-              submitEdit={submitEdit}
-              cancelEdit={cancelEdit}
-            />
-            <OnGoingCheckbox
-              onGoing={this.state.onGoing}
-              sendChanges={handleChange}
-            />
+            <ul>
+              <li>
+                <Input
+                  focus={true}
+                  label="School Name"
+                  previousValue={this.state.schoolNameInput}
+                  inputType="text"
+                  informationType="schoolName"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="Degree"
+                  previousValue={this.state.degreeInput}
+                  inputType="text"
+                  informationType="degree"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="Start Date"
+                  previousValue={this.state.startDateInput}
+                  inputType="date"
+                  informationType="startDate"
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <Input
+                  label="End Date"
+                  previousValue={this.state.endDateInput}
+                  inputType="date"
+                  informationType="endDate"
+                  onGoing={this.state.onGoing}
+                  sendChanges={handleChange}
+                  submitEdit={submitEdit}
+                  cancelEdit={cancelEdit}
+                />
+              </li>
+              <li>
+                <OnGoingCheckbox
+                  onGoing={this.state.onGoing}
+                  sendChanges={handleChange}
+                />
+              </li>
+            </ul>
           </form>
         )}
         <div className="button-group">

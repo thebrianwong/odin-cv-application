@@ -146,5 +146,42 @@ ul {
 }
 
 .button-group button:first-child {
-  margin-right: 15px;
+  margin-right: 5px;
+}
+
+.education-section,
+.work-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.education-section > p,
+.work-history-section > p {
+  margin-left: 25px;
+}
+
+/* task */
+
+.task-bullet-point > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task-bullet-point input {
+  margin-left: 0;
+}
+
+.task-bullet-point .button-group {
+  margin-left: 20px;
+}
+
+.work-history-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 60px;
+  padding: 0;
 }

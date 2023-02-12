@@ -70,7 +70,6 @@ class EducationSection extends React.Component {
             startDate={item.studyDates.start}
             endDate={item.studyDates.end}
             updateItem={updateItem}
-            addItem={addItem}
             deleteItem={deleteItem}
           />
         ))}

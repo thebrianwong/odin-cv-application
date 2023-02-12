@@ -218,8 +218,8 @@ class WorkHistoryElement extends React.Component {
               addItem={() => addTask(itemIndex)}
             />
           </div>
-          <ul className="work-history-task">
-            {tasks.map((task, index) => (
+          <ul className="work-history-task-list">
+            {tasks.map((task) => (
               <WorkHistoryBulletPoint
                 itemIndex={itemIndex}
                 taskIndex={task.taskID}

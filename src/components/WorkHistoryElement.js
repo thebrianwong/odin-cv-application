@@ -97,7 +97,6 @@ class WorkHistoryElement extends React.Component {
       resetState();
     };
     const formatDate = (rawDate) => {
-      console.log(rawDate);
       if (rawDate === "Present") {
         return rawDate;
       } else if (rawDate === "") {

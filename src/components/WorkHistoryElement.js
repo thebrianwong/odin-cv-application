@@ -127,7 +127,7 @@ class WorkHistoryElement extends React.Component {
             <p className="title">{title}</p>
           </div>
         ) : (
-          <form>
+          <form className="form-input work-history-form">
             <ul>
               <li>
                 <Input

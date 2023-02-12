@@ -33,7 +33,7 @@ class WorkHistoryBulletPoint extends React.Component {
       <li className="task-bullet-point">
         <div>
           {!this.state.editing ? (
-            <p className="task-bullet-point">{description}</p>
+            <p className="task-bullet-point-description">{description}</p>
           ) : (
             <Input
               focus={true}

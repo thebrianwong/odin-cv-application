@@ -50,6 +50,8 @@ ul {
   margin-bottom: 0;
 }
 
+/* header */
+
 .header-section {
   display: flex;
   flex-direction: column;

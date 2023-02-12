@@ -106,8 +106,14 @@ class WorkHistorySection extends React.Component {
     };
     return (
       <div className="work-history-section">
-        <h2>Work History</h2>
-        <AddItemButton addItem={addItem} />
+        <div class="work-history-header">
+          <h2>Work History</h2>
+          <AddItemButton
+            generalClassName="add-item-button"
+            specificClassName="add-work-history-item-button"
+            addItem={addItem}
+          />
+        </div>
         {this.state.items.length === 0 && <p>Add your work history here!</p>}
         {this.state.items.map((item) => (
           <WorkHistoryElement

@@ -23,18 +23,21 @@ class HeaderSection extends React.Component {
     return (
       <form className="header-section">
         <HeaderElement
+          className="header-name"
           value={this.state.name}
           headerType="name"
           inputType="text"
           updateHeader={updateHeader}
         />
         <HeaderElement
+          className="header-email"
           value={this.state.email}
           headerType="email"
           inputType="email"
           updateHeader={updateHeader}
         />
         <HeaderElement
+          className="header-phone"
           value={this.state.phone}
           headerType="phone"
           inputType="tel"

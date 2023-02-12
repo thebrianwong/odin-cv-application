@@ -9,7 +9,7 @@ class HeaderElement extends React.Component {
     this.state = { value: props.value, editing: false };
   }
   render() {
-    const { headerType, inputType, updateHeader } = this.props;
+    const { className, headerType, inputType, updateHeader } = this.props;
     let placeholder;
     if (headerType === "name") {
       placeholder = "Name";
@@ -38,7 +38,7 @@ class HeaderElement extends React.Component {
     return (
       <div className="header-item">
         {!this.state.editing ? (
-          <p className="header-text">
+          <p className={`header-text ${className}`}>
             {this.props.value.length === 0 ? placeholder : this.props.value}
           </p>
         ) : (

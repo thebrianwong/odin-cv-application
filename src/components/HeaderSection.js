@@ -1,46 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import HeaderElement from "./HeaderElement";
 
-const HeaderSection = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const updateHeader = (newValue, headerType) => {
-    if (headerType === "name") {
-      setName(newValue);
-    } else if (headerType === "email") {
-      setEmail(newValue);
-    } else if (headerType === "phone") {
-      setPhone(newValue);
-    }
-  };
-
-  return (
-    <form className="header-section">
-      <HeaderElement
-        className="header-name"
-        startingValue={name}
-        headerType="name"
-        inputType="text"
-        updateHeader={updateHeader}
-      />
-      <HeaderElement
-        className="header-email"
-        startingValue={email}
-        headerType="email"
-        inputType="email"
-        updateHeader={updateHeader}
-      />
-      <HeaderElement
-        className="header-phone"
-        startingValue={phone}
-        headerType="phone"
-        inputType="tel"
-        updateHeader={updateHeader}
-      />
-    </form>
-  );
-};
+class HeaderSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      phone: "",
+    };
+  }
+  render() {
+    const updateHeader = (newValue, headerType) => {
+      if (headerType === "name") {
+        this.setState({ ...this.state, name: newValue });
+      } else if (headerType === "email") {
+        this.setState({ ...this.state, email: newValue });
+      } else if (headerType === "phone") {
+        this.setState({ ...this.state, phone: newValue });
+      }
+    };
+    return (
+      <form className="header-section">
+        <HeaderElement
+          className="header-name"
+          value={this.state.name}
+          headerType="name"
+          inputType="text"
+          updateHeader={updateHeader}
+        />
+        <HeaderElement
+          className="header-email"
+          value={this.state.email}
+          headerType="email"
+          inputType="email"
+          updateHeader={updateHeader}
+        />
+        <HeaderElement
+          className="header-phone"
+          value={this.state.phone}
+          headerType="phone"
+          inputType="tel"
+          updateHeader={updateHeader}
+        />
+      </form>
+    );
+  }
+}
 
 export default HeaderSection;

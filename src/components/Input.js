@@ -1,52 +1,56 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 
-const Input = ({
-  focus,
-  label,
-  previousValue,
-  inputType,
-  informationType,
-  onGoing,
-  sendChanges,
-  submitEdit,
-  cancelEdit,
-}) => {
-  const [inputValue, setInputValue] = useState(previousValue);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (focus) {
-      inputRef.current.focus();
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    if (props.focus) {
+      this.input = React.createRef();
     }
-  }, []);
-
-  useEffect(() => {
-    sendChanges(inputValue, informationType);
-  }, [inputValue]);
-
-  const handleChanges = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  return (
-    <label>
-      {label && label.length > 0 && `${label}:`}
-      <input
-        ref={focus ? inputRef : undefined}
-        disabled={onGoing}
-        type={inputType}
-        value={inputValue}
-        onChange={(e) => handleChanges(e)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            submitEdit();
-          } else if (e.key === "Escape") {
-            cancelEdit();
-          }
-        }}
-      />
-    </label>
-  );
-};
+    this.state = {
+      inputValue: props.previousValue,
+    };
+  }
+  componentDidMount() {
+    if (this.props.focus) {
+      this.input.current.focus();
+    }
+  }
+  render() {
+    const {
+      focus,
+      label,
+      inputType,
+      informationType,
+      onGoing,
+      sendChanges,
+      submitEdit,
+      cancelEdit,
+    } = this.props;
+    const handleChanges = (e) => {
+      this.setState({ inputValue: e.target.value }, () =>
+        sendChanges(this.state.inputValue, informationType)
+      );
+    };
+    return (
+      <label>
+        {label && label.length > 0 && `${label}:`}
+        <input
+          ref={focus ? this.input : undefined}
+          disabled={onGoing}
+          type={inputType}
+          value={this.state.inputValue}
+          onChange={(e) => handleChanges(e)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              submitEdit();
+            } else if (e.key === "Escape") {
+              cancelEdit();
+            }
+          }}
+        />
+      </label>
+    );
+  }
+}
 
 export default Input;

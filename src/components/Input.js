@@ -8,7 +8,6 @@ class Input extends React.Component {
     }
     this.state = {
       inputValue: props.previousValue,
-      previousValue: props.previousValue,
     };
   }
   componentDidMount() {

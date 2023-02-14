@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AddItemButton from "./AddItemButton";
 import CancelEditButton from "./CancelEditButton";
 import DeleteItemButton from "./DeleteItemButton";
@@ -7,232 +7,218 @@ import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
 import WorkHistoryBulletPoint from "./WorkHistoryBulletPoint";
 
-class WorkHistoryElement extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      companyNameInput: props.companyName,
-      titleInput: props.title,
-      startDateInput: props.startDate,
-      endDateInput: props.endDate,
-      onGoing: false,
-      editing: true,
-      IDCounter: 0,
-    };
-  }
-  render() {
-    const {
-      itemIndex,
-      companyName,
-      title,
-      tasks,
-      startDate,
+const WorkHistoryElement = ({
+  itemIndex,
+  companyName,
+  title,
+  tasks,
+  startDate,
+  endDate,
+  updateItem,
+  addTask,
+  updateTask,
+  deleteItem,
+  deleteTask,
+}) => {
+  const [companyNameInput, setCompanyNameInput] = useState(companyName);
+  const [titleInput, setTitleInput] = useState(title);
+  const [startDateInput, setStartDateInput] = useState(startDate);
+  const [endDateInput, setEndDateInput] = useState(endDate);
+  const [onGoing, setOnGoing] = useState(false);
+  const [editing, setEditing] = useState(true);
+  const handleChange = (value, informationType) => {
+    switch (informationType) {
+      case "companyName":
+        setCompanyNameInput(value);
+        break;
+      case "title":
+        setTitleInput(value);
+        break;
+      case "startDate":
+        setStartDateInput(value);
+        break;
+      case "endDate":
+        setEndDateInput(value);
+        break;
+      case "onGoing":
+        setOnGoing(!onGoing);
+        break;
+      default:
+        break;
+    }
+  };
+  const resolveEndDate = () => {
+    if (onGoing) {
+      setEndDateInput("");
+      return "Present";
+    } else {
+      return endDateInput;
+    }
+  };
+  const startEdit = () => {
+    setEditing(true);
+  };
+  const submitEdit = () => {
+    setEditing(false);
+    const endDate = resolveEndDate();
+    updateItem(
+      companyNameInput,
+      titleInput,
+      startDateInput,
       endDate,
-      updateItem,
-      addTask,
-      updateTask,
-      deleteItem,
-      deleteTask,
-    } = this.props;
-    const handleChange = (value, informationType) => {
-      switch (informationType) {
-        case "companyName":
-          this.setState({ companyNameInput: value });
-          break;
-        case "title":
-          this.setState({ titleInput: value });
-          break;
-        case "startDate":
-          this.setState({ startDateInput: value });
-          break;
-        case "endDate":
-          this.setState({ endDateInput: value });
-          break;
-        case "onGoing":
-          this.setState({ onGoing: !this.state.onGoing });
-          break;
-        default:
-          break;
-      }
-    };
-    const resolveEndDate = () => {
-      if (this.state.onGoing) {
-        this.setState({ endDateInput: "" });
-        return "Present";
-      } else {
-        return this.state.endDateInput;
-      }
-    };
-    const startEdit = () => {
-      this.setState({ editing: true });
-    };
-    const submitEdit = () => {
-      this.setState({ editing: false });
-      const endDate = resolveEndDate();
-      updateItem(
-        this.state.companyNameInput,
-        this.state.titleInput,
-        this.state.startDateInput,
-        endDate,
-        itemIndex
-      );
-    };
-    const resetState = () => {
-      let isOnGoing;
-      if (this.props.endDate === "Present") {
-        isOnGoing = true;
-      } else {
-        isOnGoing = false;
-      }
-      this.setState({
-        companyNameInput: this.props.companyName,
-        titleInput: this.props.title,
-        startDateInput: this.props.startDate,
-        endDateInput: this.props.endDate,
-        onGoing: isOnGoing,
-      });
-    };
-    const cancelEdit = () => {
-      this.setState({ editing: false });
-      resetState();
-    };
-    const formatDate = (rawDate) => {
-      if (rawDate === "Present") {
-        return rawDate;
-      } else if (rawDate === "") {
-        return "";
-      } else {
-        const formatting = {
-          timeZone: "UTC",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
-        const formattedDate = new Date(rawDate).toLocaleDateString(
-          undefined,
-          formatting
-        );
-        return formattedDate;
-      }
-    };
-    return (
-      <div className="work-history-item">
-        {!this.state.editing ? (
-          <div className="contents work-history-contents">
-            <p className="company-name">{companyName}</p>
-            <p className="work-history-dates">{`${formatDate(
-              startDate
-            )} - ${formatDate(endDate)}`}</p>
-            <p className="title">{title}</p>
-          </div>
-        ) : (
-          <form className="form-input work-history-form">
-            <ul>
-              <li>
-                <Input
-                  focus={true}
-                  label="Company Name"
-                  previousValue={this.state.companyNameInput}
-                  inputType="text"
-                  informationType="companyName"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="Title"
-                  previousValue={this.state.titleInput}
-                  inputType="text"
-                  informationType="title"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="Start Date"
-                  previousValue={this.state.startDateInput}
-                  inputType="date"
-                  informationType="startDate"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="End Date"
-                  previousValue={this.state.endDateInput}
-                  inputType="date"
-                  informationType="endDate"
-                  onGoing={this.state.onGoing}
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <OnGoingCheckbox
-                  onGoing={this.state.onGoing}
-                  sendChanges={handleChange}
-                />
-              </li>
-            </ul>
-          </form>
-        )}
-        <div className="button-group">
-          <EditSubmitButtons
-            generalClassName="work-history-button"
-            editClassName="work-history-edit-button"
-            submitClassName="work-history-submit-button"
-            editing={this.state.editing}
-            startEdit={startEdit}
-            submitEdit={submitEdit}
-          />
-          {this.state.editing && (
-            <CancelEditButton
-              generalClassName="work-history-button"
-              specificClassName="work-history-cancel-edit-button"
-              cancelEdit={cancelEdit}
-            />
-          )}
-          {!this.state.editing && (
-            <DeleteItemButton
-              generalClassName="work-history-button"
-              specificClassName="work-history-delete-button"
-              itemIndex={itemIndex}
-              deleteFromCollection={deleteItem}
-            />
-          )}
-        </div>
-        <div className="work-history-task-subsection">
-          <div className="work-history-task-header">
-            <h4>Responsibilities</h4>
-            <AddItemButton
-              generalClassName="add-item-button"
-              specificClassName="add-work-history-item-button"
-              addItem={() => addTask(itemIndex)}
-            />
-          </div>
-          <ul className="work-history-task-list">
-            {tasks.map((task) => (
-              <WorkHistoryBulletPoint
-                itemIndex={itemIndex}
-                taskIndex={task.taskID}
-                key={task.taskID}
-                description={task.description}
-                updateTask={updateTask}
-                deleteTask={deleteTask}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
+      itemIndex
     );
-  }
-}
+  };
+  const resetState = () => {
+    let isOnGoing;
+    if (endDate === "Present") {
+      isOnGoing = true;
+    } else {
+      isOnGoing = false;
+    }
+    setCompanyNameInput(companyName);
+    setTitleInput(title);
+    setStartDateInput(startDate);
+    setEndDateInput(endDate);
+    setOnGoing(isOnGoing);
+  };
+  const cancelEdit = () => {
+    setEditing(false);
+    resetState();
+  };
+  const formatDate = (rawDate) => {
+    if (rawDate === "Present") {
+      return rawDate;
+    } else if (rawDate === "") {
+      return "";
+    } else {
+      const formatting = {
+        timeZone: "UTC",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const formattedDate = new Date(rawDate).toLocaleDateString(
+        undefined,
+        formatting
+      );
+      return formattedDate;
+    }
+  };
+  return (
+    <div className="work-history-item">
+      {!editing ? (
+        <div className="contents work-history-contents">
+          <p className="company-name">{companyName}</p>
+          <p className="work-history-dates">{`${formatDate(
+            startDate
+          )} - ${formatDate(endDate)}`}</p>
+          <p className="title">{title}</p>
+        </div>
+      ) : (
+        <form className="form-input work-history-form">
+          <ul>
+            <li>
+              <Input
+                focus={true}
+                label="Company Name"
+                previousValue={companyNameInput}
+                inputType="text"
+                informationType="companyName"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="Title"
+                previousValue={titleInput}
+                inputType="text"
+                informationType="title"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="Start Date"
+                previousValue={startDateInput}
+                inputType="date"
+                informationType="startDate"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="End Date"
+                previousValue={endDateInput}
+                inputType="date"
+                informationType="endDate"
+                onGoing={onGoing}
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <OnGoingCheckbox onGoing={onGoing} sendChanges={handleChange} />
+            </li>
+          </ul>
+        </form>
+      )}
+      <div className="button-group">
+        <EditSubmitButtons
+          generalClassName="work-history-button"
+          editClassName="work-history-edit-button"
+          submitClassName="work-history-submit-button"
+          editing={editing}
+          startEdit={startEdit}
+          submitEdit={submitEdit}
+        />
+        {editing && (
+          <CancelEditButton
+            generalClassName="work-history-button"
+            specificClassName="work-history-cancel-edit-button"
+            cancelEdit={cancelEdit}
+          />
+        )}
+        {!editing && (
+          <DeleteItemButton
+            generalClassName="work-history-button"
+            specificClassName="work-history-delete-button"
+            itemIndex={itemIndex}
+            deleteFromCollection={deleteItem}
+          />
+        )}
+      </div>
+      <div className="work-history-task-subsection">
+        <div className="work-history-task-header">
+          <h4>Responsibilities</h4>
+          <AddItemButton
+            generalClassName="add-item-button"
+            specificClassName="add-work-history-item-button"
+            addItem={() => addTask(itemIndex)}
+          />
+        </div>
+        <ul className="work-history-task-list">
+          {tasks.map((task) => (
+            <WorkHistoryBulletPoint
+              itemIndex={itemIndex}
+              taskIndex={task.taskID}
+              key={task.taskID}
+              description={task.description}
+              updateTask={updateTask}
+              deleteTask={deleteTask}
+            />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default WorkHistoryElement;

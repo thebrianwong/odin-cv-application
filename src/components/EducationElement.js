@@ -1,209 +1,197 @@
-import React from "react";
+import React, { useState } from "react";
 import CancelEditButton from "./CancelEditButton";
 import DeleteItemButton from "./DeleteItemButton";
 import EditSubmitButtons from "./EditSubmitButtons";
 import Input from "./Input";
 import OnGoingCheckbox from "./OnGoingCheckbox";
 
-class EducationElement extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      schoolNameInput: props.schoolName,
-      degreeInput: props.degree,
-      startDateInput: props.startDate,
-      endDateInput: props.endDate,
-      onGoing: false,
-      editing: true,
-    };
-  }
-  render() {
-    const {
-      schoolName,
-      degree,
-      startDate,
+const EducationElement = ({
+  schoolName,
+  degree,
+  startDate,
+  endDate,
+  updateItem,
+  deleteItem,
+  itemIndex,
+}) => {
+  const [schoolNameInput, setSchoolNameInput] = useState(schoolName);
+  const [degreeInput, setDegreeInput] = useState(degree);
+  const [startDateInput, setStartDateInput] = useState(startDate);
+  const [endDateInput, setEndDateInput] = useState(endDate);
+  const [onGoing, setOnGoing] = useState(false);
+  const [editing, setEditing] = useState(true);
+  const handleChange = (value, informationType) => {
+    switch (informationType) {
+      case "schoolName":
+        setSchoolNameInput(value);
+        break;
+      case "degree":
+        setDegreeInput(value);
+        break;
+      case "startDate":
+        setStartDateInput(value);
+        break;
+      case "endDate":
+        setEndDateInput(value);
+        break;
+      case "onGoing":
+        setOnGoing(!onGoing);
+        break;
+      default:
+        break;
+    }
+  };
+  const resolveEndDate = () => {
+    if (onGoing) {
+      setEndDateInput("");
+      return "Present";
+    } else {
+      return endDateInput;
+    }
+  };
+  const startEdit = () => {
+    setEditing(true);
+  };
+  const submitEdit = () => {
+    setEditing(false);
+    const endDate = resolveEndDate();
+    updateItem(
+      schoolNameInput,
+      degreeInput,
+      startDateInput,
       endDate,
-      updateItem,
-      deleteItem,
-      itemIndex,
-    } = this.props;
-    const handleChange = (value, informationType) => {
-      switch (informationType) {
-        case "schoolName":
-          this.setState({ schoolNameInput: value });
-          break;
-        case "degree":
-          this.setState({ degreeInput: value });
-          break;
-        case "startDate":
-          this.setState({ startDateInput: value });
-          break;
-        case "endDate":
-          this.setState({ endDateInput: value });
-          break;
-        case "onGoing":
-          this.setState({ onGoing: !this.state.onGoing });
-          break;
-        default:
-          break;
-      }
-    };
-    const resolveEndDate = () => {
-      if (this.state.onGoing) {
-        this.setState({ endDateInput: "" });
-        return "Present";
-      } else {
-        return this.state.endDateInput;
-      }
-    };
-    const startEdit = () => {
-      this.setState({ editing: true });
-    };
-    const submitEdit = () => {
-      this.setState({ editing: false });
-      const endDate = resolveEndDate();
-      updateItem(
-        this.state.schoolNameInput,
-        this.state.degreeInput,
-        this.state.startDateInput,
-        endDate,
-        itemIndex
-      );
-    };
-    const resetState = () => {
-      let isOnGoing;
-      if (this.props.endDate === "Present") {
-        isOnGoing = true;
-      } else {
-        isOnGoing = false;
-      }
-      this.setState({
-        schoolNameInput: this.props.schoolName,
-        degreeInput: this.props.degree,
-        startDateInput: this.props.startDate,
-        endDateInput: this.props.endDate,
-        onGoing: isOnGoing,
-      });
-    };
-    const cancelEdit = () => {
-      this.setState({ editing: false });
-      resetState();
-    };
-    const formatDate = (rawDate) => {
-      if (rawDate === "Present") {
-        return rawDate;
-      } else if (rawDate === "") {
-        return "";
-      } else {
-        const formatting = {
-          timeZone: "UTC",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
-        const formattedDate = new Date(rawDate).toLocaleDateString(
-          undefined,
-          formatting
-        );
-        return formattedDate;
-      }
-    };
-    return (
-      <div className="education-item">
-        {!this.state.editing ? (
-          <div className="contents education-contents">
-            <p className="school-name">{schoolName}</p>
-            <p className="education-dates">{`${formatDate(
-              startDate
-            )} - ${formatDate(endDate)}`}</p>
-            <p className="degree">{degree}</p>
-          </div>
-        ) : (
-          <form className="form-input education-form">
-            <ul>
-              <li>
-                <Input
-                  focus={true}
-                  label="School Name"
-                  previousValue={this.state.schoolNameInput}
-                  inputType="text"
-                  informationType="schoolName"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="Degree"
-                  previousValue={this.state.degreeInput}
-                  inputType="text"
-                  informationType="degree"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="Start Date"
-                  previousValue={this.state.startDateInput}
-                  inputType="date"
-                  informationType="startDate"
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <Input
-                  label="End Date"
-                  previousValue={this.state.endDateInput}
-                  inputType="date"
-                  informationType="endDate"
-                  onGoing={this.state.onGoing}
-                  sendChanges={handleChange}
-                  submitEdit={submitEdit}
-                  cancelEdit={cancelEdit}
-                />
-              </li>
-              <li>
-                <OnGoingCheckbox
-                  onGoing={this.state.onGoing}
-                  sendChanges={handleChange}
-                />
-              </li>
-            </ul>
-          </form>
-        )}
-        <div className="button-group">
-          <EditSubmitButtons
-            generalClassName="education-button"
-            editClassName="education-edit-button"
-            submitClassName="education-submit-button"
-            editing={this.state.editing}
-            startEdit={startEdit}
-            submitEdit={submitEdit}
-          />
-          {this.state.editing && (
-            <CancelEditButton
-              generalClassName="education-button"
-              specificClassName="education-cancel-edit-button"
-              cancelEdit={cancelEdit}
-            />
-          )}
-          {!this.state.editing && (
-            <DeleteItemButton
-              generalClassName="education-button"
-              specificClassName="education-delete-button"
-              itemIndex={itemIndex}
-              deleteFromCollection={deleteItem}
-            />
-          )}
-        </div>
-      </div>
+      itemIndex
     );
-  }
-}
+  };
+  const resetState = () => {
+    let isOnGoing;
+    if (endDate === "Present") {
+      isOnGoing = true;
+    } else {
+      isOnGoing = false;
+    }
+    setSchoolNameInput(schoolName);
+    setDegreeInput(degree);
+    setStartDateInput(startDate);
+    setEndDateInput(endDate);
+    setOnGoing(isOnGoing);
+  };
+  const cancelEdit = () => {
+    setEditing(false);
+    resetState();
+  };
+  const formatDate = (rawDate) => {
+    if (rawDate === "Present") {
+      return rawDate;
+    } else if (rawDate === "") {
+      return "";
+    } else {
+      const formatting = {
+        timeZone: "UTC",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const formattedDate = new Date(rawDate).toLocaleDateString(
+        undefined,
+        formatting
+      );
+      return formattedDate;
+    }
+  };
+
+  return (
+    <div className="education-item">
+      {!editing ? (
+        <div className="contents education-contents">
+          <p className="school-name">{schoolName}</p>
+          <p className="education-dates">{`${formatDate(
+            startDate
+          )} - ${formatDate(endDate)}`}</p>
+          <p className="degree">{degree}</p>
+        </div>
+      ) : (
+        <form className="form-input education-form">
+          <ul>
+            <li>
+              <Input
+                focus={true}
+                label="School Name"
+                previousValue={schoolNameInput}
+                inputType="text"
+                informationType="schoolName"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="Degree"
+                previousValue={degreeInput}
+                inputType="text"
+                informationType="degree"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="Start Date"
+                previousValue={startDateInput}
+                inputType="date"
+                informationType="startDate"
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <Input
+                label="End Date"
+                previousValue={endDateInput}
+                inputType="date"
+                informationType="endDate"
+                onGoing={onGoing}
+                sendChanges={handleChange}
+                submitEdit={submitEdit}
+                cancelEdit={cancelEdit}
+              />
+            </li>
+            <li>
+              <OnGoingCheckbox onGoing={onGoing} sendChanges={handleChange} />
+            </li>
+          </ul>
+        </form>
+      )}
+      <div className="button-group">
+        <EditSubmitButtons
+          generalClassName="education-button"
+          editClassName="education-edit-button"
+          submitClassName="education-submit-button"
+          editing={editing}
+          startEdit={startEdit}
+          submitEdit={submitEdit}
+        />
+        {editing && (
+          <CancelEditButton
+            generalClassName="education-button"
+            specificClassName="education-cancel-edit-button"
+            cancelEdit={cancelEdit}
+          />
+        )}
+        {!editing && (
+          <DeleteItemButton
+            generalClassName="education-button"
+            specificClassName="education-delete-button"
+            itemIndex={itemIndex}
+            deleteFromCollection={deleteItem}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default EducationElement;
